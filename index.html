@@ -4,9 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Urbest Eggs — Farm-Fresh, Always First</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-
 <style>
   :root {
     --fb-blue:      #1877F2;
@@ -22,15 +20,8 @@
     --fb-accent:    #1877F2;
   }
 
-  *, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
 
   body {
     font-family: 'DM Sans', sans-serif;
@@ -39,15 +30,10 @@
     overflow-x: hidden;
   }
 
+  /* ─── NAV ─── */
   nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
     padding: .8rem 3rem;
     background: var(--fb-white);
     border-bottom: 1px solid var(--fb-border);
@@ -55,285 +41,258 @@
   }
 
   .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: .6rem;
+    display: flex; align-items: center; gap: .6rem;
     font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    font-weight: 900;
+    font-size: 1.4rem; font-weight: 900;
     color: var(--fb-text);
     text-decoration: none;
   }
+  .nav-logo svg { width: 34px; height: 34px; }
+  .nav-logo .logo-egg { color: var(--fb-blue); }
 
-  .nav-links {
-    display: flex;
-    gap: .3rem;
-    list-style: none;
-  }
-
+  .nav-links { display: flex; gap: .3rem; list-style: none; }
   .nav-links a {
-    text-decoration: none;
-    color: var(--fb-muted);
-    font-size: .9rem;
-    font-weight: 500;
-    padding: .5rem 1rem;
-    border-radius: 8px;
+    text-decoration: none; color: var(--fb-muted);
+    font-size: .9rem; font-weight: 500;
+    padding: .5rem 1rem; border-radius: 8px;
     transition: background .15s, color .15s;
   }
+  .nav-links a:hover { background: var(--fb-bg); color: var(--fb-blue); }
 
-  .nav-links a:hover {
-    background: var(--fb-bg);
-    color: var(--fb-blue);
-  }
-
-  .nav-right {
-    display: flex;
-    gap: .8rem;
-    align-items: center;
-  }
+  .nav-right { display: flex; gap: .8rem; align-items: center; }
 
   .nav-cta {
-    background: var(--fb-blue);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
+    background: var(--fb-blue); color: #fff;
+    border: none; border-radius: 8px;
     padding: .5rem 1.2rem;
     font-family: 'DM Sans', sans-serif;
-    font-weight: 600;
-    font-size: .85rem;
-    cursor: pointer;
-    transition: background .2s;
+    font-weight: 600; font-size: .85rem;
+    cursor: pointer; transition: background .2s;
     text-decoration: none;
   }
+  .nav-cta:hover { background: var(--fb-blue-hover); }
 
+  .nav-icon-btn {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--fb-light-btn);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: background .15s;
+    position: relative; border: none;
+  }
+  .nav-icon-btn:hover { background: var(--fb-border); }
+
+  .cart-badge {
+    position: absolute; top: -3px; right: -3px;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--fb-blue); color: #fff;
+    font-size: .62rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid #fff;
+    transition: transform .2s;
+  }
+
+  /* ─── HERO ─── */
   .hero {
     min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: grid; grid-template-columns: 1fr 1fr;
     align-items: center;
     padding: 6rem 3rem 4rem;
     background: var(--fb-white);
-    position: relative;
-    overflow: hidden;
+    position: relative; overflow: hidden;
   }
 
-  /* FLOATING BACKGROUND EGGS */
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(circle at 80% 50%, rgba(24,119,242,.06) 0, transparent 55%),
+      radial-gradient(circle at 10% 80%, rgba(24,119,242,.04) 0, transparent 45%);
+  }
+
   .bg-egg {
-    position: absolute;
-    opacity: .06;
-    z-index: 0;
+    position: absolute; opacity: .04; z-index: 0;
     animation: floatEgg linear infinite;
   }
-
-  .bg-egg ellipse {
-    fill: #F2DFC1;
-  }
-
   @keyframes floatEgg {
-    from {
-      transform: translateY(110vh) rotate(0deg);
-    }
-    to {
-      transform: translateY(-20vh) rotate(360deg);
-    }
+    from { transform: translateY(110vh) rotate(0deg); }
+    to   { transform: translateY(-20vh) rotate(360deg); }
   }
 
-  /* HERO TEXT */
-  .hero-text {
-    position: relative;
-    z-index: 1;
-  }
+  .hero-text { position: relative; z-index: 1; }
 
   .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: .4rem;
-    background: #FFF4D7;
-    color: #B87A00;
-    border-radius: 50px;
-    padding: .35rem 1rem;
-    font-size: .78rem;
-    font-weight: 600;
-    letter-spacing: .04em;
+    display: inline-flex; align-items: center; gap: .4rem;
+    background: #E7F0FD;
+    color: var(--fb-blue);
+    border-radius: 50px; padding: .35rem 1rem;
+    font-size: .78rem; font-weight: 600; letter-spacing: .04em;
     margin-bottom: 1.4rem;
+    animation: fadeUp .7s ease both;
   }
+  .hero-badge::before { content: '●'; font-size: .45rem; animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
 
   h1 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2.8rem, 5vw, 4.8rem);
-    font-weight: 900;
-    line-height: 1.06;
+    font-weight: 900; line-height: 1.06;
+    color: var(--fb-text);
+    animation: fadeUp .8s .1s ease both;
   }
 
   h1 em {
-    font-style: italic;
-    color: #D68B00;
+    font-style: italic; color: var(--fb-blue);
+    position: relative; display: inline-block;
+  }
+  h1 em::after {
+    content: '';
+    position: absolute; bottom: 2px; left: 0; right: 0; height: 3px;
+    background: var(--fb-blue); border-radius: 2px; opacity: .2;
   }
 
   .hero-sub {
     margin-top: 1.2rem;
-    font-size: 1rem;
-    line-height: 1.7;
-    color: var(--fb-muted);
+    font-size: 1rem; font-weight: 400;
+    line-height: 1.7; color: var(--fb-muted);
     max-width: 420px;
+    animation: fadeUp .8s .2s ease both;
   }
 
   .hero-actions {
-    margin-top: 2rem;
-    display: flex;
-    gap: .8rem;
-    align-items: center;
+    margin-top: 2rem; display: flex; gap: .8rem; align-items: center;
+    animation: fadeUp .8s .35s ease both;
   }
 
   .btn-primary {
-    background: #D68B00;
-    color: white;
-    border: none;
-    border-radius: 8px;
+    background: var(--fb-blue); color: #fff;
+    border: none; border-radius: 8px;
     padding: .75rem 1.8rem;
-    font-weight: 600;
-    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .95rem; font-weight: 600;
+    cursor: pointer; transition: all .2s;
+    text-decoration: none; display: inline-block;
   }
+  .btn-primary:hover { background: var(--fb-blue-hover); box-shadow: 0 4px 14px rgba(24,119,242,.3); transform: translateY(-1px); }
 
   .btn-secondary {
-    background: #F4E7C7;
-    color: #6A4A00;
-    border: none;
-    border-radius: 8px;
+    background: var(--fb-light-btn); color: var(--fb-text);
+    border: none; border-radius: 8px;
     padding: .75rem 1.8rem;
-    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .95rem; font-weight: 600;
+    cursor: pointer; transition: background .2s;
+    text-decoration: none; display: inline-block;
   }
+  .btn-secondary:hover { background: var(--fb-border); }
 
-  /* HERO VISUAL */
+  .hero-stats {
+    margin-top: 2.5rem; display: flex; gap: 2rem;
+    animation: fadeUp .8s .5s ease both;
+  }
+  .stat-divider { width: 1px; background: var(--fb-border); }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem; font-weight: 700; color: var(--fb-blue);
+  }
+  .stat-label { font-size: .75rem; color: var(--fb-muted); margin-top: .1rem; }
+
+  /* ─── HERO VISUAL ─── */
   .hero-visual {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative; z-index: 1;
+    display: flex; justify-content: center; align-items: center;
+    animation: fadeUp .9s .15s ease both;
   }
 
-  .egg-scene {
-    position: relative;
-    width: 460px;
-    height: 460px;
-  }
+  .egg-scene { position: relative; width: 460px; height: 460px; }
 
   .orbit-ring {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    border: 1.5px dashed rgba(210,150,50,.25);
+    position: absolute; inset: 0; border-radius: 50%;
+    border: 1.5px dashed rgba(24,119,242,.2);
     animation: spin linear infinite;
   }
-
-  .orbit-ring:nth-child(1) {
-    inset: 40px;
-    animation-duration: 18s;
-  }
-
-  .orbit-ring:nth-child(2) {
-    inset: 80px;
-    animation-duration: 26s;
-    animation-direction: reverse;
-  }
-
-  @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-  /* ORBIT EGGS */
-  .orbit-egg,
-  .orbit-egg-2 {
-    position: absolute;
-    transform-origin: center;
-  }
+  .orbit-ring:nth-child(1) { inset: 40px; animation-duration: 18s; }
+  .orbit-ring:nth-child(2) { inset: 80px; animation-duration: 26s; animation-direction: reverse; }
+  @keyframes spin { to { transform: rotate(360deg); } }
 
   .orbit-egg {
+    position: absolute; transform-origin: center;
     animation: orbitEgg linear infinite;
   }
+  @keyframes orbitEgg {
+    from { transform: rotate(0deg) translateX(155px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(155px) rotate(-360deg); }
+  }
+  .orbit-egg:nth-child(3) { top:50%;left:50%;margin:-13px;animation-duration:18s; }
+  .orbit-egg:nth-child(4) { top:50%;left:50%;margin:-10px;animation-duration:18s;animation-delay:-6s; }
+  .orbit-egg:nth-child(5) { top:50%;left:50%;margin:-10px;animation-duration:18s;animation-delay:-12s; }
 
   .orbit-egg-2 {
+    position: absolute; transform-origin: center;
     animation: orbitEgg2 linear infinite;
   }
-
-  @keyframes orbitEgg {
-    from {
-      transform: rotate(0deg) translateX(155px) rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg) translateX(155px) rotate(-360deg);
-    }
-  }
-
   @keyframes orbitEgg2 {
-    from {
-      transform: rotate(0deg) translateX(105px) rotate(0deg);
-    }
-    to {
-      transform: rotate(-360deg) translateX(105px) rotate(360deg);
-    }
+    from { transform: rotate(0deg) translateX(105px) rotate(0deg); }
+    to   { transform: rotate(-360deg) translateX(105px) rotate(360deg); }
   }
-
-  .orbit-egg ellipse,
-  .orbit-egg-2 ellipse {
-    fill: #F2DFC1;
-    stroke: #C89A5B;
-  }
-
-  .orbit-egg circle,
-  .orbit-egg-2 circle {
-    fill: #F2A21B;
-  }
+  .orbit-egg-2:nth-child(6) { top:50%;left:50%;margin:-8px;animation-duration:26s; }
+  .orbit-egg-2:nth-child(7) { top:50%;left:50%;margin:-8px;animation-duration:26s;animation-delay:-13s; }
 
   .main-egg-wrap {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    position: absolute; top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     animation: bob 3.5s ease-in-out infinite;
   }
+  @keyframes bob { 0%,100%{transform:translate(-50%,-50%) translateY(0)} 50%{transform:translate(-50%,-50%) translateY(-14px)} }
 
-  @keyframes bob {
-    0%,100% {
-      transform: translate(-50%,-50%) translateY(0);
-    }
-    50% {
-      transform: translate(-50%,-50%) translateY(-14px);
-    }
+  .glow-ring {
+    position: absolute; top: 50%; left: 50%;
+    width: 210px; height: 210px;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(24,119,242,.12) 0, transparent 70%);
+    animation: glowPulse 3.5s ease-in-out infinite;
   }
+  @keyframes glowPulse { 0%,100%{opacity:1;transform:translate(-50%,-50%) scale(1)} 50%{opacity:.5;transform:translate(-50%,-50%) scale(1.12)} }
 
-  /* PRODUCTS */
-  .products {
-    padding: 5rem 3rem;
-    max-width: 1200px;
-    margin: 0 auto;
+  /* ─── MARQUEE ─── */
+  .marquee-section {
+    background: var(--fb-blue);
+    padding: .75rem 0; overflow: hidden;
   }
+  .marquee-track {
+    display: flex; gap: 3rem;
+    animation: marquee 22s linear infinite;
+    white-space: nowrap;
+  }
+  .marquee-track span {
+    color: #fff; font-size: .78rem; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase;
+    flex-shrink: 0; display: flex; align-items: center; gap: .5rem;
+  }
+  .marquee-track span::before { content: '✦'; font-size: .5rem; opacity: .7; }
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
+  /* ─── SECTION SHARED ─── */
   .section-label {
-    font-size: .75rem;
-    font-weight: 600;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: #D68B00;
-    margin-bottom: .6rem;
+    font-size: .75rem; font-weight: 600;
+    letter-spacing: .12em; text-transform: uppercase;
+    color: var(--fb-blue); margin-bottom: .6rem;
   }
-
   .section-title {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.8rem, 3vw, 2.8rem);
-    font-weight: 900;
+    font-weight: 900; color: var(--fb-text); line-height: 1.15;
+  }
+  .section-header {
+    display: flex; align-items: flex-end;
+    justify-content: space-between; margin-bottom: 2.5rem;
+    flex-wrap: wrap; gap: 1rem;
   }
 
-  .section-header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    margin-bottom: 2.5rem;
-    flex-wrap: wrap;
-    gap: 1rem;
+  /* ─── PRODUCTS ─── */
+  .products {
+    padding: 5rem 3rem;
+    max-width: 1200px; margin: 0 auto;
   }
 
   .product-grid {
@@ -343,420 +302,470 @@
   }
 
   .product-card {
-    background: white;
+    background: var(--fb-white);
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid var(--fb-border);
     box-shadow: 0 1px 3px rgba(0,0,0,.08);
-    transition: .25s;
+    transition: transform .22s, box-shadow .22s;
+    cursor: pointer;
   }
-
   .product-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 24px rgba(0,0,0,.12);
   }
 
-  /* THIS IS THE CARD TOP COLOR YOU ASKED */
   .card-visual {
     height: 195px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #FCE6A4;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
   }
+  .card-visual svg { transition: transform .3s; }
+  .product-card:hover .card-visual svg { transform: scale(1.08) rotate(-2deg); }
 
-  /* KEEP BOTTOM WHITE */
-  .card-body {
-    background: white;
-    padding: 1.2rem 1.4rem 1.4rem;
-  }
+  .card-body { padding: 1.2rem 1.4rem 1.4rem; }
 
   .card-tag {
     display: inline-block;
-    background: #FFF2CC;
-    color: #B87A00;
-    border-radius: 6px;
-    padding: .18rem .65rem;
-    font-size: .7rem;
-    font-weight: 700;
-    margin-bottom: .6rem;
+    background: #E7F0FD; color: var(--fb-blue);
+    border-radius: 6px; padding: .18rem .65rem;
+    font-size: .7rem; font-weight: 700;
+    letter-spacing: .04em; margin-bottom: .6rem;
   }
 
   .card-name {
     font-family: 'Playfair Display', serif;
-    font-size: 1.15rem;
-    font-weight: 700;
-    margin-bottom: .3rem;
+    font-size: 1.15rem; font-weight: 700;
+    color: var(--fb-text); margin-bottom: .3rem;
   }
-
-  .card-desc {
-    font-size: .83rem;
-    color: var(--fb-muted);
-    line-height: 1.55;
-  }
+  .card-desc { font-size: .83rem; color: var(--fb-muted); line-height: 1.55; }
 
   .card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 1rem;
+    display: flex; align-items: center;
+    justify-content: space-between; margin-top: 1rem;
     padding-top: 1rem;
-    border-top: 1px solid #f1f1f1;
+    border-top: 1px solid var(--fb-bg);
   }
 
   .card-price {
     font-family: 'Playfair Display', serif;
-    font-size: 1.35rem;
-    font-weight: 700;
-    color: #D68B00;
+    font-size: 1.35rem; font-weight: 700; color: var(--fb-blue);
   }
+  .card-price sup { font-size: .68rem; vertical-align: super; }
 
   .card-btn {
-    background: #D68B00;
-    color: white;
-    border: none;
-    border-radius: 8px;
+    background: var(--fb-blue); color: #fff;
+    border: none; border-radius: 8px;
     padding: .45rem 1rem;
-    font-size: .85rem;
-    font-weight: 700;
-    cursor: pointer;
+    font-size: .85rem; font-weight: 700;
+    cursor: pointer; transition: background .2s, transform .15s;
+  }
+  .card-btn:hover { background: var(--fb-blue-hover); transform: scale(1.05); }
+
+  /* ─── WHY US ─── */
+  .why {
+    background: var(--fb-white);
+    border-top: 1px solid var(--fb-border);
+    border-bottom: 1px solid var(--fb-border);
+    padding: 5rem 3rem;
+  }
+  .why-inner { max-width: 1200px; margin: 0 auto; }
+
+  .why h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 900; color: var(--fb-text);
+    margin-bottom: 2.5rem; text-align: center;
+  }
+  .why h2 em { color: var(--fb-blue); font-style: italic; }
+
+  .features {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1.2rem;
   }
 
-  /* REAL EGG COLORS INSIDE PRODUCTS */
-  .egg-shell {
-    fill: #E3BE8D;
-    stroke: #C6945A;
-    stroke-width: 2;
+  .feature {
+    background: var(--fb-bg);
+    border: 1px solid var(--fb-border);
+    border-radius: 12px; padding: 1.8rem 1.5rem;
+    transition: border-color .2s, box-shadow .2s, transform .2s;
+  }
+  .feature:hover {
+    border-color: var(--fb-blue);
+    box-shadow: 0 4px 16px rgba(24,119,242,.1);
+    transform: translateY(-3px);
   }
 
-  .egg-yolk {
-    fill: #F2A21B;
+  .feature-icon {
+    width: 50px; height: 50px;
+    background: #E7F0FD; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem; font-size: 1.5rem;
   }
 
-  .egg-highlight {
-    fill: white;
-    opacity: .55;
+  .feature h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; color: var(--fb-text); margin-bottom: .4rem;
+  }
+  .feature p { font-size: .83rem; color: var(--fb-muted); line-height: 1.6; }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials {
+    padding: 5rem 3rem;
+    max-width: 1200px; margin: 0 auto; text-align: center;
   }
 
+  .testi-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+    gap: 1.2rem; margin-top: 2.5rem;
+  }
+
+  .testi-card {
+    background: var(--fb-white);
+    border-radius: 12px; padding: 1.8rem;
+    border: 1px solid var(--fb-border);
+    box-shadow: 0 1px 3px rgba(0,0,0,.07);
+    text-align: left;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .testi-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,.1); transform: translateY(-3px); }
+
+  .stars { color: var(--fb-blue); font-size: .95rem; margin-bottom: .8rem; letter-spacing: .08em; }
+  .testi-text { font-size: .88rem; line-height: 1.65; color: var(--fb-muted); margin-bottom: 1rem; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: .75rem; }
+  .testi-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: #E7F0FD;
+    border: 2px solid var(--fb-blue);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .95rem;
+  }
+  .testi-name { font-weight: 600; font-size: .84rem; color: var(--fb-text); }
+  .testi-loc { font-size: .73rem; color: var(--fb-muted); }
+
+  /* ─── CTA ─── */
+  .cta-section {
+    background: var(--fb-blue);
+    padding: 5rem 3rem; text-align: center; position: relative; overflow: hidden;
+  }
+  .cta-section::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 30% 70%, rgba(255,255,255,.08) 0, transparent 55%);
+  }
+  .cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+    font-weight: 900; color: #fff; position: relative;
+  }
+  .cta-section p { color: rgba(255,255,255,.85); margin: 1rem 0 1.8rem; font-size: 1rem; position: relative; }
+
+  .btn-white {
+    background: #fff; color: var(--fb-blue);
+    border: none; border-radius: 8px;
+    padding: .85rem 2.2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .95rem; font-weight: 700;
+    cursor: pointer; transition: all .2s;
+    text-decoration: none; display: inline-block; position: relative;
+  }
+  .btn-white:hover { background: #E7F0FD; box-shadow: 0 4px 16px rgba(0,0,0,.2); transform: translateY(-2px); }
+
+  /* ─── FOOTER ─── */
   footer {
-    background: white;
+    background: var(--fb-white);
     border-top: 1px solid var(--fb-border);
     padding: 2rem 3rem;
-    text-align: center;
-    margin-top: 5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1.2rem;
   }
 
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 900; color: var(--fb-text);
+    display: flex; align-items: center; gap: .6rem;
+  }
+  .footer-logo .logo-egg { color: var(--fb-blue); }
+
+  .footer-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+  .footer-links a { color: var(--fb-muted); text-decoration: none; font-size: .83rem; transition: color .2s; }
+  .footer-links a:hover { color: var(--fb-blue); }
+
+  .footer-copy { color: var(--fb-border); font-size: .75rem; }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── TOAST ─── */
+  .toast {
+    position: fixed; bottom: 2rem; right: 2rem;
+    background: var(--fb-white);
+    border: 1px solid var(--fb-border);
+    color: var(--fb-text);
+    padding: .85rem 1.3rem; border-radius: 10px;
+    font-size: .86rem; z-index: 999;
+    display: flex; align-items: center; gap: .55rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,.15);
+    transform: translateY(120%); opacity: 0;
+    transition: all .35s cubic-bezier(.34,1.56,.64,1);
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  /* ─── RESPONSIVE ─── */
   @media(max-width:768px) {
-    nav {
-      padding: .8rem 1.2rem;
-    }
-
-    .nav-links {
-      display: none;
-    }
-
-    .hero {
-      grid-template-columns: 1fr;
-      padding: 5.5rem 1.5rem 3rem;
-    }
-
-    .hero-visual {
-      display: none;
-    }
-
-    .products {
-      padding: 3.5rem 1.2rem;
-    }
+    nav { padding: .8rem 1.2rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 5.5rem 1.5rem 3rem; }
+    .hero-visual { display: none; }
+    .hero-actions { flex-wrap: wrap; }
+    .products, .testimonials { padding: 3.5rem 1.2rem; }
+    .why { padding: 3.5rem 1.2rem; }
+    footer { flex-direction: column; text-align: center; padding: 2rem 1.2rem; }
+    .section-header { flex-direction: column; align-items: flex-start; }
+    .hero-stats { gap: 1.2rem; }
   }
 </style>
 </head>
-
 <body>
+
+<div class="toast" id="toast">🥚 Added to cart!</div>
 
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    🥚 Urbest Eggs
+    <svg viewBox="0 0 36 36" fill="none">
+      <ellipse cx="18" cy="20" rx="13" ry="14" fill="#E7F0FD" stroke="#1877F2" stroke-width="1.8"/>
+      <circle cx="18" cy="21" r="5.5" fill="#1877F2"/>
+      <path d="M18 7 L16 11 L19 13 L17 17" stroke="#1877F2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Urbest <span class="logo-egg">Eggs</span>
   </a>
-
   <ul class="nav-links">
     <li><a href="#products">Shop</a></li>
     <li><a href="#why">Our Farm</a></li>
     <li><a href="#reviews">Reviews</a></li>
   </ul>
-
   <div class="nav-right">
+    <button class="nav-icon-btn" onclick="toggleCart()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#050505" stroke-width="2" stroke-linecap="round">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <path d="M16 10a4 4 0 01-8 0"/>
+      </svg>
+      <div class="cart-badge" id="cartCount">0</div>
+    </button>
     <a href="#products" class="nav-cta">Order Now</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-
-  <!-- FLOATING EGGS -->
-  <svg class="bg-egg" style="left:5%;width:55px;animation-duration:22s;" viewBox="0 0 40 50">
-    <ellipse cx="20" cy="27" rx="16" ry="20"/>
-  </svg>
-
-  <svg class="bg-egg" style="left:30%;width:35px;animation-duration:18s;" viewBox="0 0 40 50">
-    <ellipse cx="20" cy="27" rx="16" ry="20"/>
-  </svg>
-
-  <svg class="bg-egg" style="left:72%;width:50px;animation-duration:25s;" viewBox="0 0 40 50">
-    <ellipse cx="20" cy="27" rx="16" ry="20"/>
-  </svg>
+  <svg class="bg-egg" style="left:5%;width:55px;animation-duration:22s;animation-delay:-5s" viewBox="0 0 40 50"><ellipse cx="20" cy="27" rx="16" ry="20" fill="#1877F2"/></svg>
+  <svg class="bg-egg" style="left:30%;width:35px;animation-duration:18s;animation-delay:-3s" viewBox="0 0 40 50"><ellipse cx="20" cy="27" rx="16" ry="20" fill="#1877F2"/></svg>
+  <svg class="bg-egg" style="left:72%;width:50px;animation-duration:25s;animation-delay:-10s" viewBox="0 0 40 50"><ellipse cx="20" cy="27" rx="16" ry="20" fill="#1877F2"/></svg>
 
   <div class="hero-text">
-    <div class="hero-badge">
-      🌿 Fresh Daily — Farm to Door
-    </div>
-
-    <h1>
-      The <em>Freshest</em><br>
-      Eggs in Town
-    </h1>
-
-    <p class="hero-sub">
-      Hand-collected every morning from our free-range hens.
-      Rich golden yolks and premium freshness delivered to your table.
-    </p>
-
+    <div class="hero-badge">🌿 Fresh Daily — Farm to Door</div>
+    <h1>The <em>Freshest</em><br>Eggs in Town</h1>
+    <p class="hero-sub">Hand-collected every morning from our free-range hens. Rich golden yolks, superior nutrition — delivered straight to your table.</p>
     <div class="hero-actions">
       <a href="#products" class="btn-primary">Browse Eggs 🥚</a>
       <a href="#why" class="btn-secondary">Our Farm Story</a>
     </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Happy Customers</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div>
+        <div class="stat-num">4.9★</div>
+        <div class="stat-label">Average Rating</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Cage-Free</div>
+      </div>
+    </div>
   </div>
 
-  <!-- HERO EGG -->
   <div class="hero-visual">
     <div class="egg-scene">
-
       <div class="orbit-ring"></div>
       <div class="orbit-ring"></div>
-
+      <div class="orbit-egg">
+        <svg width="26" height="32" viewBox="0 0 28 34"><ellipse cx="14" cy="19" rx="12" ry="14" fill="#E7F0FD" stroke="#1877F2" stroke-width="1.5"/><circle cx="14" cy="20" r="4" fill="#1877F2" opacity=".8"/></svg>
+      </div>
+      <div class="orbit-egg">
+        <svg width="19" height="23" viewBox="0 0 28 34"><ellipse cx="14" cy="19" rx="12" ry="14" fill="#1877F2" opacity=".3"/></svg>
+      </div>
+      <div class="orbit-egg">
+        <svg width="22" height="27" viewBox="0 0 28 34"><ellipse cx="14" cy="19" rx="12" ry="14" fill="#1877F2" opacity=".2"/></svg>
+      </div>
+      <div class="orbit-egg-2">
+        <svg width="16" height="20" viewBox="0 0 28 34"><ellipse cx="14" cy="19" rx="12" ry="14" fill="#1877F2" opacity=".25"/></svg>
+      </div>
+      <div class="orbit-egg-2">
+        <svg width="13" height="16" viewBox="0 0 28 34"><ellipse cx="14" cy="19" rx="12" ry="14" fill="#1877F2" opacity=".18"/></svg>
+      </div>
+      <div class="glow-ring"></div>
       <div class="main-egg-wrap">
-        <svg width="220" height="260" viewBox="0 0 220 260">
-
-          <ellipse cx="110" cy="130" rx="85" ry="105"
-                   fill="#E8C89A"
-                   stroke="#C6945A"
-                   stroke-width="2"/>
-
-          <ellipse cx="90" cy="75" rx="18" ry="28"
-                   fill="white"
-                   opacity=".55"
-                   transform="rotate(-20 90 75)"/>
-
-          <ellipse cx="110" cy="185" rx="70" ry="28"
-                   fill="#FFF8ED"/>
-
-          <circle cx="110" cy="180" r="40"
-                  fill="#F2A21B"/>
-
+        <svg width="195" height="235" viewBox="0 0 200 240" fill="none">
+          <defs>
+            <radialGradient id="shellG" cx="38%" cy="32%" r="65%">
+              <stop offset="0%" stop-color="#FFFFFF"/>
+              <stop offset="45%" stop-color="#E7F0FD"/>
+              <stop offset="100%" stop-color="#A8C8F8"/>
+            </radialGradient>
+            <radialGradient id="yolkG" cx="40%" cy="38%" r="60%">
+              <stop offset="0%" stop-color="#5BA3FF"/>
+              <stop offset="55%" stop-color="#1877F2"/>
+              <stop offset="100%" stop-color="#0D5FCC"/>
+            </radialGradient>
+            <radialGradient id="innerG" cx="45%" cy="40%" r="65%">
+              <stop offset="0%" stop-color="#EBF2FF"/>
+              <stop offset="100%" stop-color="#C8DCFC"/>
+            </radialGradient>
+            <filter id="eggShadow" x="-20%" y="-10%" width="140%" height="130%">
+              <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#1877F2" flood-opacity="0.15"/>
+            </filter>
+            <clipPath id="eggClip">
+              <ellipse cx="100" cy="132" rx="80" ry="102"/>
+            </clipPath>
+          </defs>
+          <ellipse cx="100" cy="230" rx="62" ry="9" fill="#1877F2" opacity="0.08"/>
+          <ellipse cx="100" cy="132" rx="80" ry="102" fill="url(#shellG)" stroke="#A8C8F8" stroke-width="1.5" filter="url(#eggShadow)"/>
+          <path d="M100 32 L94 52 L102 60 L96 78" stroke="#1877F2" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+          <path d="M148 90 L138 98 L142 108" stroke="#1877F2" stroke-width="1" stroke-linecap="round" opacity="0.25"/>
+          <ellipse cx="72" cy="66" rx="20" ry="30" fill="white" opacity="0.55" transform="rotate(-20 72 66)"/>
+          <ellipse cx="78" cy="56" rx="8" ry="13" fill="white" opacity="0.7" transform="rotate(-20 78 56)"/>
+          <ellipse cx="100" cy="175" rx="68" ry="26" fill="url(#innerG)" clip-path="url(#eggClip)"/>
+          <circle cx="100" cy="168" r="38" fill="url(#yolkG)" clip-path="url(#eggClip)"/>
+          <ellipse cx="87" cy="156" rx="10" ry="7" fill="white" opacity="0.35" transform="rotate(-20 87 156)"/>
+          <ellipse cx="82" cy="152" rx="4" ry="3" fill="white" opacity="0.55" transform="rotate(-20 82 152)"/>
+          <circle cx="130" cy="100" r="2.2" fill="#1877F2" opacity="0.3"/>
+          <circle cx="145" cy="128" r="1.6" fill="#1877F2" opacity="0.25"/>
+          <circle cx="60" cy="128" r="1.8" fill="#1877F2" opacity="0.25"/>
+          <path d="M170 58 L172 53 L174 58 L179 60 L174 62 L172 67 L170 62 L165 60 Z" fill="#1877F2" opacity="0.5"/>
+          <path d="M24 98 L25.5 94 L27 98 L31 99.5 L27 101 L25.5 105 L24 101 L20 99.5 Z" fill="#1877F2" opacity="0.4"/>
         </svg>
       </div>
-
     </div>
   </div>
 </section>
 
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span>Free-Range Hens</span><span>No Hormones Added</span><span>Hand-Collected Daily</span><span>Rich Golden Yolks</span><span>Cage-Free Always</span><span>Local Farm Fresh</span><span>100% Natural Feed</span><span>Delivered to Your Door</span>
+    <span>Free-Range Hens</span><span>No Hormones Added</span><span>Hand-Collected Daily</span><span>Rich Golden Yolks</span><span>Cage-Free Always</span><span>Local Farm Fresh</span><span>100% Natural Feed</span><span>Delivered to Your Door</span>
+  </div>
+</div>
+
 <!-- PRODUCTS -->
 <section class="products" id="products">
-
   <div class="section-header">
     <div>
       <div class="section-label">Our Collection</div>
       <h2 class="section-title">Pick Your Perfect Eggs</h2>
     </div>
+    <a href="#" style="color:var(--fb-blue);text-decoration:none;font-size:.9rem;font-weight:600;">See all →</a>
   </div>
-
   <div class="product-grid">
 
-    <!-- CARD 1 -->
     <div class="product-card">
-
-      <div class="card-visual">
-
-        <svg width="105" height="125" viewBox="0 0 110 130">
-
-          <ellipse class="egg-shell"
-                   cx="55"
-                   cy="72"
-                   rx="44"
-                   ry="56"/>
-
-          <circle class="egg-yolk"
-                  cx="55"
-                  cy="82"
-                  r="20"/>
-
-          <ellipse class="egg-highlight"
-                   cx="44"
-                   cy="68"
-                   rx="10"
-                   ry="16"
-                   transform="rotate(-20 44 68)"/>
-
+      <div class="card-visual" style="background:linear-gradient(135deg,#EBF2FF,#C8DCFC)">
+        <svg width="105" height="125" viewBox="0 0 110 130" fill="none">
+          <defs><radialGradient id="g1" cx="38%" cy="33%" r="65%"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#C8DCFC"/></radialGradient></defs>
+          <ellipse cx="55" cy="72" rx="44" ry="56" fill="url(#g1)" stroke="#1877F2" stroke-width="1.8"/>
+          <circle cx="55" cy="82" r="20" fill="#1877F2"/>
+          <ellipse cx="44" cy="68" rx="10" ry="16" fill="white" opacity="0.5" transform="rotate(-20 44 68)"/>
+          <ellipse cx="41" cy="63" rx="4" ry="7" fill="white" opacity="0.7" transform="rotate(-20 41 63)"/>
+          <path d="M88 26 L89.5 22 L91 26 L95 27.5 L91 29 L89.5 33 L88 29 L84 27.5 Z" fill="#1877F2" opacity="0.5"/>
         </svg>
-
       </div>
-
       <div class="card-body">
         <div class="card-tag">Best Seller</div>
-
-        <div class="card-name">
-          Classic White Eggs
-        </div>
-
-        <div class="card-desc">
-          Mild flavor, smooth shell. Perfect for everyday cooking and baking.
-        </div>
-
+        <div class="card-name">Classic White Eggs</div>
+        <div class="card-desc">Mild flavor, smooth shell. Perfect for everyday cooking and baking.</div>
         <div class="card-footer">
-          <div class="card-price">₱89</div>
-          <button class="card-btn">+ Add</button>
+          <div class="card-price"><sup>₱</sup>89</div>
+          <button class="card-btn" onclick="addToCart(this)">+ Add</button>
         </div>
       </div>
     </div>
 
-    <!-- CARD 2 -->
     <div class="product-card">
-
-      <div class="card-visual">
-
-        <svg width="105" height="125" viewBox="0 0 110 130">
-
-          <ellipse class="egg-shell"
-                   cx="55"
-                   cy="72"
-                   rx="44"
-                   ry="56"
-                   fill="#C69258"/>
-
-          <circle class="egg-yolk"
-                  cx="55"
-                  cy="82"
-                  r="22"/>
-
-          <ellipse class="egg-highlight"
-                   cx="43"
-                   cy="68"
-                   rx="11"
-                   ry="17"
-                   transform="rotate(-20 43 68)"/>
-
+      <div class="card-visual" style="background:linear-gradient(135deg,#DDEAFF,#B0CCFA)">
+        <svg width="105" height="125" viewBox="0 0 110 130" fill="none">
+          <defs>
+            <radialGradient id="g2" cx="38%" cy="33%" r="65%"><stop offset="0%" stop-color="#F0F6FF"/><stop offset="100%" stop-color="#8BB8F8"/></radialGradient>
+            <radialGradient id="gy2" cx="38%" cy="36%" r="60%"><stop offset="0%" stop-color="#5BA3FF"/><stop offset="100%" stop-color="#0D5FCC"/></radialGradient>
+          </defs>
+          <ellipse cx="55" cy="72" rx="44" ry="56" fill="url(#g2)" stroke="#1877F2" stroke-width="1.8"/>
+          <circle cx="55" cy="82" r="22" fill="url(#gy2)"/>
+          <ellipse cx="43" cy="68" rx="11" ry="17" fill="white" opacity="0.4" transform="rotate(-20 43 68)"/>
+          <ellipse cx="40" cy="63" rx="4" ry="6" fill="white" opacity="0.6" transform="rotate(-20 40 63)"/>
+          <circle cx="74" cy="55" r="2" fill="#1877F2" opacity="0.4"/>
+          <circle cx="79" cy="75" r="1.5" fill="#1877F2" opacity="0.35"/>
         </svg>
-
       </div>
-
       <div class="card-body">
         <div class="card-tag">Farm Fresh</div>
-
-        <div class="card-name">
-          Brown Heritage Eggs
-        </div>
-
-        <div class="card-desc">
-          Deep rich yolks with earthy flavor from heritage hens.
-        </div>
-
+        <div class="card-name">Brown Heritage Eggs</div>
+        <div class="card-desc">Deep rich yolks, earthy flavor. From heritage breed hens raised on pasture.</div>
         <div class="card-footer">
-          <div class="card-price">₱110</div>
-          <button class="card-btn">+ Add</button>
+          <div class="card-price"><sup>₱</sup>110</div>
+          <button class="card-btn" onclick="addToCart(this)">+ Add</button>
         </div>
       </div>
     </div>
 
-    <!-- CARD 3 -->
     <div class="product-card">
-
-      <div class="card-visual">
-
-        <svg width="105" height="125" viewBox="0 0 110 130">
-
-          <ellipse class="egg-shell"
-                   cx="55"
-                   cy="72"
-                   rx="44"
-                   ry="56"/>
-
-          <ellipse cx="55"
-                   cy="84"
-                   rx="30"
-                   ry="12"
-                   fill="#FFF8ED"/>
-
-          <circle class="egg-yolk"
-                  cx="55"
-                  cy="79"
-                  r="19"/>
-
+      <div class="card-visual" style="background:linear-gradient(135deg,#E0EEFF,#AACBFF)">
+        <svg width="105" height="125" viewBox="0 0 110 130" fill="none">
+          <defs><radialGradient id="g3" cx="38%" cy="33%" r="65%"><stop offset="0%" stop-color="#F5F9FF"/><stop offset="100%" stop-color="#6FA8F5"/></radialGradient></defs>
+          <ellipse cx="55" cy="72" rx="44" ry="56" fill="url(#g3)" stroke="#1877F2" stroke-width="1.8"/>
+          <ellipse cx="55" cy="84" rx="30" ry="12" fill="#EBF2FF" opacity="0.9"/>
+          <circle cx="55" cy="79" r="19" fill="#1877F2"/>
+          <ellipse cx="44" cy="67" rx="10" ry="16" fill="white" opacity="0.4" transform="rotate(-18 44 67)"/>
+          <path d="M88 28 L89.5 24 L91 28 L95 29.5 L91 31 L89.5 35 L88 31 L84 29.5 Z" fill="#1877F2" opacity="0.5"/>
+          <path d="M20 93 L21 90 L22 93 L25 94 L22 95 L21 98 L20 95 L17 94 Z" fill="#1877F2" opacity="0.4"/>
         </svg>
-
       </div>
-
       <div class="card-body">
         <div class="card-tag">Organic</div>
-
-        <div class="card-name">
-          Organic Free-Range
-        </div>
-
-        <div class="card-desc">
-          Certified organic feed with superior nutrition and freshness.
-        </div>
-
+        <div class="card-name">Organic Free-Range</div>
+        <div class="card-desc">Certified organic feed, no pesticides. The healthiest choice for your family.</div>
         <div class="card-footer">
-          <div class="card-price">₱145</div>
-          <button class="card-btn">+ Add</button>
+          <div class="card-price"><sup>₱</sup>145</div>
+          <button class="card-btn" onclick="addToCart(this)">+ Add</button>
         </div>
       </div>
     </div>
 
-    <!-- CARD 4 -->
     <div class="product-card">
-
-      <div class="card-visual">
-
-        <svg width="105" height="125" viewBox="0 0 110 130">
-
-          <ellipse class="egg-shell"
-                   cx="55"
-                   cy="70"
-                   rx="40"
-                   ry="60"
-                   fill="#BC8650"/>
-
-          <circle class="egg-yolk"
-                  cx="55"
-                  cy="78"
-                  r="17"/>
-
-          <ellipse class="egg-highlight"
-                   cx="43"
-                   cy="60"
-                   rx="11"
-                   ry="18"
-                   transform="rotate(-22 43 60)"/>
-
+      <div class="card-visual" style="background:linear-gradient(135deg,#D6E8FF,#96BEFF)">
+        <svg width="105" height="125" viewBox="0 0 110 130" fill="none">
+          <defs><radialGradient id="g4" cx="38%" cy="32%" r="68%"><stop offset="0%" stop-color="#EEF5FF"/><stop offset="100%" stop-color="#5590E8"/></radialGradient></defs>
+          <ellipse cx="55" cy="70" rx="40" ry="60" fill="url(#g4)" stroke="#1877F2" stroke-width="1.8"/>
+          <ellipse cx="55" cy="82" rx="28" ry="10" fill="#E7F0FD" opacity="0.8"/>
+          <circle cx="55" cy="78" r="17" fill="#1877F2"/>
+          <ellipse cx="43" cy="60" rx="11" ry="18" fill="white" opacity="0.35" transform="rotate(-22 43 60)"/>
+          <ellipse cx="40" cy="55" rx="5" ry="8" fill="white" opacity="0.5" transform="rotate(-22 40 55)"/>
+          <circle cx="74" cy="52" r="2.2" fill="#1877F2" opacity="0.35"/>
         </svg>
-
       </div>
-
       <div class="card-body">
         <div class="card-tag">Premium</div>
-
-        <div class="card-name">
-          Duck Eggs
-        </div>
-
-        <div class="card-desc">
-          Richer and creamier taste loved by bakers everywhere.
-        </div>
-
+        <div class="card-name">Duck Eggs</div>
+        <div class="card-desc">Richer, creamier taste. Beloved by bakers for fluffier pastries and cakes.</div>
         <div class="card-footer">
-          <div class="card-price">₱185</div>
-          <button class="card-btn">+ Add</button>
+          <div class="card-price"><sup>₱</sup>185</div>
+          <button class="card-btn" onclick="addToCart(this)">+ Add</button>
         </div>
       </div>
     </div>
@@ -764,9 +773,124 @@
   </div>
 </section>
 
+<!-- WHY US -->
+<section class="why" id="why">
+  <div class="why-inner">
+    <div class="section-label" style="text-align:center">Why Us</div>
+    <h2>Why Choose <em>Urbest?</em></h2>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">🐔</div>
+        <h3>Happy Hens</h3>
+        <p>Our hens roam freely on open pasture, foraging naturally. Happy hens lay the best eggs.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🌿</div>
+        <h3>No Chemicals</h3>
+        <p>Zero artificial hormones or antibiotics. Just clean, wholesome nutrition in every egg.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🚚</div>
+        <h3>Same-Day Delivery</h3>
+        <p>Eggs collected at dawn, at your door by afternoon. Nothing fresher than that.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">♻️</div>
+        <h3>Eco Packaging</h3>
+        <p>All packaging is 100% compostable. Good for you, and kind to the planet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+  <div class="section-label" style="text-align:center">What Customers Say</div>
+  <h2 class="section-title">People Love Our Eggs</h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"The yolks are gorgeous — nothing like the pale ones from the supermarket. My kids won't eat any other brand now."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👩</div>
+        <div><div class="testi-name">Maria Santos</div><div class="testi-loc">Quezon City</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"I'm a home baker and the duck eggs from Urbest have completely elevated my cakes. The difference in texture is unreal."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👨</div>
+        <div><div class="testi-name">Carlo Reyes</div><div class="testi-loc">Makati</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"Same-day delivery is a game changer. I order in the morning and they arrive before lunch. Freshest eggs I've ever had."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👩</div>
+        <div><div class="testi-name">Ana Lim</div><div class="testi-loc">Pasig</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready for the Freshest Eggs<br>You've Ever Tasted?</h2>
+  <p>Join 500+ happy families who start every morning with Urbest.</p>
+  <a href="#products" class="btn-white">Order Fresh Eggs Now 🥚</a>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  © 2026 Urbest Eggs. All rights reserved.
+  <div class="footer-logo">
+    <svg width="26" height="26" viewBox="0 0 36 36" fill="none">
+      <ellipse cx="18" cy="20" rx="13" ry="14" fill="#E7F0FD" stroke="#1877F2" stroke-width="1.5"/>
+      <circle cx="18" cy="21" r="5.5" fill="#1877F2"/>
+      <path d="M18 7 L16 11 L19 13 L17 17" stroke="#1877F2" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Urbest <span class="logo-egg">Eggs</span>
+  </div>
+  <ul class="footer-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#products">Shop</a></li>
+    <li><a href="#why">Our Farm</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Urbest Eggs. All rights reserved.</div>
 </footer>
 
+<script>
+  let cartCount = 0;
+  function addToCart(btn) {
+    cartCount++;
+    const badge = document.getElementById('cartCount');
+    badge.textContent = cartCount;
+    badge.style.transform = 'scale(1.5)';
+    setTimeout(() => badge.style.transform = 'scale(1)', 200);
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2200);
+    btn.textContent = '✓ Added';
+    btn.style.background = '#0D5FCC';
+    setTimeout(() => { btn.textContent = '+ Add'; btn.style.background = ''; }, 1000);
+  }
+  function toggleCart() {
+    const toast = document.getElementById('toast');
+    toast.textContent = cartCount === 0 ? '🛒 Your cart is empty' : `🥚 ${cartCount} item(s) in cart`;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2000);
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.style.animation = 'fadeUp .55s ease forwards'; e.target.style.opacity = '1'; }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.product-card, .feature, .testi-card').forEach(el => {
+    el.style.opacity = '0'; observer.observe(el);
+  });
+</script>
 </body>
 </html>
