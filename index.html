@@ -93,10 +93,12 @@
 
   /* ─── HERO ─── */
   .hero {
-    min-height: 100vh;
     display: grid; grid-template-columns: 1fr 1fr;
     align-items: center;
-    padding: 6rem 3rem 4rem;
+    padding-top: calc(4rem + 60px);
+    padding-bottom: 3.5rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
     background: var(--fb-white);
     position: relative; overflow: hidden;
   }
@@ -187,7 +189,7 @@
   .btn-secondary:hover { background: var(--fb-border); }
 
   .hero-stats {
-    margin-top: 2.5rem; display: flex; gap: 2rem;
+    margin-top: 2rem; margin-bottom: 0; display: flex; gap: 2rem;
     animation: fadeUp .8s .5s ease both;
   }
   .stat-divider { width: 1px; background: var(--fb-border); }
@@ -195,7 +197,7 @@
     font-family: 'Playfair Display', serif;
     font-size: 1.7rem; font-weight: 700; color: var(--fb-blue);
   }
-  .stat-label { font-size: .75rem; color: var(--fb-muted); margin-top: .1rem; }
+  .stat-label { font-size: .75rem; color: var(--fb-muted); margin-top: .1rem; line-height: 1.4; }
 
   /* ─── HERO VISUAL ─── */
   .hero-visual {
@@ -522,7 +524,7 @@
   @media(max-width:768px) {
     nav { padding: .8rem 1.2rem; }
     .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; padding: 5.5rem 1.5rem 3rem; }
+    .hero { grid-template-columns: 1fr; padding-top: calc(3rem + 60px); padding-bottom: 2.5rem; padding-left: 1.5rem; padding-right: 1.5rem; }
     .hero-visual { display: none; }
     .hero-actions { flex-wrap: wrap; }
     .products, .testimonials { padding: 3.5rem 1.2rem; }
@@ -574,17 +576,17 @@
   <svg class="bg-egg" style="left:72%;width:50px;animation-duration:25s;animation-delay:-10s" viewBox="0 0 40 50"><ellipse cx="20" cy="27" rx="16" ry="20" fill="#F5E6C8"/></svg>
 
   <div class="hero-text">
-    <div class="hero-badge">🌿 Fresh Daily — Farm to Door</div>
-    <h1>The <em>Freshest</em><br>Eggs in Town</h1>
-    <p class="hero-sub">Hand-collected every morning from our free-range hens. Rich golden yolks, superior nutrition — delivered straight to your table.</p>
+    <div class="hero-badge">🥚 Creamy Orange Yolk Eggs</div>
+    <h1>One of the <em>Freshest</em><br>Eggs in Pangasinan</h1>
+    <p class="hero-sub">Hand-harvested every single day from our lovingly cared-for manok, with eggstraordinary yolks that you'll love and should've have tasted long ago.</p>
     <div class="hero-actions">
       <a href="#products" class="btn-primary">Browse Eggs 🥚</a>
       <a href="#why" class="btn-secondary">Our Farm Story</a>
     </div>
     <div class="hero-stats">
       <div>
-        <div class="stat-num">500+</div>
-        <div class="stat-label">Happy Customers</div>
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Early & Growing<br>Happy Customers</div>
       </div>
       <div class="stat-divider"></div>
       <div>
@@ -594,7 +596,7 @@
       <div class="stat-divider"></div>
       <div>
         <div class="stat-num">100%</div>
-        <div class="stat-label">Cage-Free</div>
+        <div class="stat-label">Layer Farm Manok</div>
       </div>
     </div>
   </div>
@@ -703,8 +705,8 @@
 <!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
-    <span>Free-Range Hens</span><span>No Hormones Added</span><span>Hand-Collected Daily</span><span>Rich Golden Yolks</span><span>Cage-Free Always</span><span>Local Farm Fresh</span><span>100% Natural Feed</span><span>Delivered to Your Door</span>
-    <span>Free-Range Hens</span><span>No Hormones Added</span><span>Hand-Collected Daily</span><span>Rich Golden Yolks</span><span>Cage-Free Always</span><span>Local Farm Fresh</span><span>100% Natural Feed</span><span>Delivered to Your Door</span>
+    <span>Hands-On Weighing</span><span>Healthy Layer Farming</span><span>Hand-Collected Daily</span><span>Rich Golden Yolks</span><span>Cage-Free Always</span><span>Local Farm Fresh</span><span>100% Natural Feed</span><span>Delivered to Your Door</span>
+    <span>Hands-On Weighing</span><span>Healthy Layer Farming</span><span>Hand-Collected Daily</span><span>Rich Golden Yolks</span><span>Cage-Free Always</span><span>Local Farm Fresh</span><span>100% Natural Feed</span><span>Delivered to Your Door</span>
   </div>
 </div>
 
