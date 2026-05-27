@@ -594,15 +594,15 @@
 <!-- WHY US -->
 <section class="why" id="why">
   <div class="why-inner">
-    <div style="position:relative;text-align:center;margin-bottom:2.5rem;">
-      <!-- Lottie icons absolutely positioned behind, flanking the label row -->
-      <div id="confused-icon" style="position:absolute;left:50%;transform:translateX(calc(-50% - 90px));top:0;width:48px;height:48px;z-index:0;pointer-events:none;"></div>
-      <div id="question-icon" style="position:absolute;left:50%;transform:translateX(calc(-50% + 90px - 48px));top:0;width:48px;height:48px;z-index:0;pointer-events:none;"></div>
-      <!-- Text on top -->
-      <div style="position:relative;z-index:1;">
-        <div class="section-label" style="margin-bottom:.4rem;">Why Us</div>
-        <h2 style="margin-bottom:0;white-space:nowrap;font-size:clamp(1.15rem,2vw,1.9rem);">୨ Why Choose <em>Urbest?</em> ৎ</h2>
+    <div style="text-align:center;margin-bottom:2.5rem;">
+      <!-- Row: icon | label | icon — icons are big, label text centered -->
+      <div style="display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-bottom:.6rem;">
+        <div id="confused-icon" style="width:64px;height:64px;flex-shrink:0;"></div>
+        <div class="section-label" style="margin-bottom:0;letter-spacing:.18em;">──── WHY US ────</div>
+        <div id="question-icon" style="width:64px;height:64px;flex-shrink:0;"></div>
       </div>
+      <!-- Heading fully below, separate row, never overlapping -->
+      <h2 style="margin-bottom:0;white-space:nowrap;">୨ Why Choose <em>Urbest?</em> ৎ</h2>
     </div>
     <div class="features">
       <div class="feature">
