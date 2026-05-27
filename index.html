@@ -30,7 +30,7 @@
     overflow-x: hidden;
   }
 
-  /* ─── NAV ─── */
+  /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
@@ -39,17 +39,14 @@
     border-bottom: 1px solid var(--fb-border);
     box-shadow: 0 2px 4px rgba(0,0,0,.08);
   }
-
   .nav-logo {
     display: flex; align-items: center; gap: .6rem;
     font-family: 'Playfair Display', serif;
     font-size: 1.4rem; font-weight: 900;
-    color: var(--fb-text);
-    text-decoration: none;
+    color: var(--fb-text); text-decoration: none;
   }
   .nav-logo svg { width: 34px; height: 34px; }
   .nav-logo .logo-egg { color: var(--fb-blue); }
-
   .nav-links { display: flex; gap: .3rem; list-style: none; }
   .nav-links a {
     text-decoration: none; color: var(--fb-muted);
@@ -58,169 +55,115 @@
     transition: background .15s, color .15s;
   }
   .nav-links a:hover { background: var(--fb-bg); color: var(--fb-blue); }
-
   .nav-right { display: flex; gap: .8rem; align-items: center; }
-
   .nav-cta {
     background: var(--fb-blue); color: #fff;
-    border: none; border-radius: 8px;
-    padding: .5rem 1.2rem;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 600; font-size: .85rem;
-    cursor: pointer; transition: background .2s;
-    text-decoration: none;
+    border: none; border-radius: 8px; padding: .5rem 1.2rem;
+    font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: .85rem;
+    cursor: pointer; transition: background .2s; text-decoration: none;
   }
   .nav-cta:hover { background: var(--fb-blue-hover); }
-
   .nav-icon-btn {
     width: 40px; height: 40px; border-radius: 50%;
     background: var(--fb-light-btn);
     display: flex; align-items: center; justify-content: center;
-    cursor: pointer; transition: background .15s;
-    position: relative; border: none;
+    cursor: pointer; transition: background .15s; position: relative; border: none;
   }
   .nav-icon-btn:hover { background: var(--fb-border); }
-
   .cart-badge {
     position: absolute; top: -3px; right: -3px;
     width: 18px; height: 18px; border-radius: 50%;
     background: var(--fb-blue); color: #fff;
     font-size: .62rem; font-weight: 700;
     display: flex; align-items: center; justify-content: center;
-    border: 2px solid #fff;
-    transition: transform .2s;
+    border: 2px solid #fff; transition: transform .2s;
   }
 
-  /* ─── HERO ─── */
+  /* HERO */
   .hero {
-    display: grid; grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding-top: calc(4rem + 60px);
-    padding-bottom: 3.5rem;
-    padding-left: 3rem;
-    padding-right: 3rem;
-    background: var(--fb-white);
-    position: relative; overflow: hidden;
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    padding-top: calc(4rem + 60px); padding-bottom: 3.5rem;
+    padding-left: 3rem; padding-right: 3rem;
+    background: var(--fb-white); position: relative; overflow: hidden;
   }
-
   .hero::after {
-    content: '';
-    position: absolute; inset: 0; z-index: 0;
-    background:
-      radial-gradient(circle at 80% 50%, rgba(24,119,242,.06) 0, transparent 55%),
-      radial-gradient(circle at 10% 80%, rgba(24,119,242,.04) 0, transparent 45%);
+    content: ''; position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(circle at 80% 50%, rgba(24,119,242,.06) 0, transparent 55%),
+                radial-gradient(circle at 10% 80%, rgba(24,119,242,.04) 0, transparent 45%);
   }
-
-  /* Floating background eggs — natural egg shape, off-white/cream */
-  .bg-egg {
-    position: absolute; opacity: .04; z-index: 0;
-    animation: floatEgg linear infinite;
-  }
+  .bg-egg { position: absolute; opacity: .04; z-index: 0; animation: floatEgg linear infinite; }
   @keyframes floatEgg {
     from { transform: translateY(110vh) rotate(0deg); }
     to   { transform: translateY(-20vh) rotate(360deg); }
   }
-
   .hero-text { position: relative; z-index: 1; }
-
   .hero-badge {
     display: inline-flex; align-items: center; gap: .4rem;
-    background: #E7F0FD;
-    color: var(--fb-blue);
+    background: #E7F0FD; color: var(--fb-blue);
     border-radius: 50px; padding: .35rem 1rem;
     font-size: .78rem; font-weight: 600; letter-spacing: .04em;
-    margin-bottom: 1.4rem;
-    animation: fadeUp .7s ease both;
+    margin-bottom: 1.4rem; animation: fadeUp .7s ease both;
   }
   .hero-badge::before { content: '●'; font-size: .45rem; animation: pulse 1.5s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
-
   h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2.8rem, 5vw, 4.8rem);
-    font-weight: 900; line-height: 1.06;
-    color: var(--fb-text);
-    animation: fadeUp .8s .1s ease both;
+    font-size: clamp(2.8rem, 5vw, 4.8rem); font-weight: 900; line-height: 1.06;
+    color: var(--fb-text); animation: fadeUp .8s .1s ease both;
   }
-
   h1 em {
-    font-style: italic; color: var(--fb-blue);
-    position: relative; display: inline-block;
+    font-style: italic; color: var(--fb-blue); position: relative; display: inline-block;
   }
   h1 em::after {
-    content: '';
-    position: absolute; bottom: 2px; left: 0; right: 0; height: 3px;
+    content: ''; position: absolute; bottom: 2px; left: 0; right: 0; height: 3px;
     background: var(--fb-blue); border-radius: 2px; opacity: .2;
   }
-
   .hero-sub {
-    margin-top: 1.2rem;
-    font-size: 1rem; font-weight: 400;
-    line-height: 1.7; color: var(--fb-muted);
-    max-width: 420px;
+    margin-top: 1.2rem; font-size: 1rem; font-weight: 400;
+    line-height: 1.7; color: var(--fb-muted); max-width: 420px;
     animation: fadeUp .8s .2s ease both;
   }
-
   .hero-actions {
     margin-top: 2rem; display: flex; gap: .8rem; align-items: center;
     animation: fadeUp .8s .35s ease both;
   }
-
   .btn-primary {
-    background: var(--fb-blue); color: #fff;
-    border: none; border-radius: 8px;
-    padding: .75rem 1.8rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: .95rem; font-weight: 600;
-    cursor: pointer; transition: all .2s;
+    background: var(--fb-blue); color: #fff; border: none; border-radius: 8px;
+    padding: .75rem 1.8rem; font-family: 'DM Sans', sans-serif;
+    font-size: .95rem; font-weight: 600; cursor: pointer; transition: all .2s;
     text-decoration: none; display: inline-block;
   }
   .btn-primary:hover { background: var(--fb-blue-hover); box-shadow: 0 4px 14px rgba(24,119,242,.3); transform: translateY(-1px); }
-
   .btn-secondary {
-    background: var(--fb-light-btn); color: var(--fb-text);
-    border: none; border-radius: 8px;
-    padding: .75rem 1.8rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: .95rem; font-weight: 600;
-    cursor: pointer; transition: background .2s;
+    background: var(--fb-light-btn); color: var(--fb-text); border: none; border-radius: 8px;
+    padding: .75rem 1.8rem; font-family: 'DM Sans', sans-serif;
+    font-size: .95rem; font-weight: 600; cursor: pointer; transition: background .2s;
     text-decoration: none; display: inline-block;
   }
   .btn-secondary:hover { background: var(--fb-border); }
-
   .hero-stats {
     margin-top: 2rem; margin-bottom: 0; display: flex; gap: 2rem;
     animation: fadeUp .8s .5s ease both;
   }
   .stat-divider { width: 1px; background: var(--fb-border); }
-  .stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.7rem; font-weight: 700; color: var(--fb-blue);
-  }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; color: var(--fb-blue); }
   .stat-label { font-size: .75rem; color: var(--fb-muted); margin-top: .1rem; line-height: 1.4; }
 
-  /* ─── HERO VISUAL ─── */
+  /* HERO VISUAL */
   .hero-visual {
     position: relative; z-index: 1;
     display: flex; justify-content: center; align-items: center;
     animation: fadeUp .9s .15s ease both;
   }
-
   .egg-scene { position: relative; width: 460px; height: 460px; }
-
   .orbit-ring {
     position: absolute; inset: 0; border-radius: 50%;
-    border: 1.5px dashed rgba(24,119,242,.2);
-    animation: spin linear infinite;
+    border: 1.5px dashed rgba(24,119,242,.2); animation: spin linear infinite;
   }
   .orbit-ring:nth-child(1) { inset: 40px; animation-duration: 18s; }
   .orbit-ring:nth-child(2) { inset: 80px; animation-duration: 26s; animation-direction: reverse; }
   @keyframes spin { to { transform: rotate(360deg); } }
-
-  .orbit-egg {
-    position: absolute; transform-origin: center;
-    animation: orbitEgg linear infinite;
-  }
+  .orbit-egg { position: absolute; transform-origin: center; animation: orbitEgg linear infinite; }
   @keyframes orbitEgg {
     from { transform: rotate(0deg) translateX(155px) rotate(0deg); }
     to   { transform: rotate(360deg) translateX(155px) rotate(-360deg); }
@@ -228,44 +171,30 @@
   .orbit-egg:nth-child(3) { top:50%;left:50%;margin:-13px;animation-duration:18s; }
   .orbit-egg:nth-child(4) { top:50%;left:50%;margin:-10px;animation-duration:18s;animation-delay:-6s; }
   .orbit-egg:nth-child(5) { top:50%;left:50%;margin:-10px;animation-duration:18s;animation-delay:-12s; }
-
-  .orbit-egg-2 {
-    position: absolute; transform-origin: center;
-    animation: orbitEgg2 linear infinite;
-  }
+  .orbit-egg-2 { position: absolute; transform-origin: center; animation: orbitEgg2 linear infinite; }
   @keyframes orbitEgg2 {
     from { transform: rotate(0deg) translateX(105px) rotate(0deg); }
     to { transform: rotate(-360deg) translateX(105px) rotate(360deg); }
   }
   .orbit-egg-2:nth-child(6) { top:50%;left:50%;margin:-8px;animation-duration:26s; }
   .orbit-egg-2:nth-child(7) { top:50%;left:50%;margin:-8px;animation-duration:26s;animation-delay:-13s; }
-
   .main-egg-wrap {
     position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    animation: bob 3.5s ease-in-out infinite;
+    transform: translate(-50%, -50%); animation: bob 3.5s ease-in-out infinite;
   }
   @keyframes bob { 0%,100%{transform:translate(-50%,-50%) translateY(0)} 50%{transform:translate(-50%,-50%) translateY(-14px)} }
-
   .glow-ring {
-    position: absolute; top: 50%; left: 50%;
-    width: 210px; height: 210px;
-    transform: translate(-50%,-50%);
-    border-radius: 50%;
+    position: absolute; top: 50%; left: 50%; width: 210px; height: 210px;
+    transform: translate(-50%,-50%); border-radius: 50%;
     background: radial-gradient(circle, rgba(24,119,242,.12) 0, transparent 70%);
     animation: glowPulse 3.5s ease-in-out infinite;
   }
   @keyframes glowPulse { 0%,100%{opacity:1;transform:translate(-50%,-50%) scale(1)} 50%{opacity:.5;transform:translate(-50%,-50%) scale(1.12)} }
 
-  /* ─── MARQUEE ─── */
-  .marquee-section {
-    background: var(--fb-blue);
-    padding: .75rem 0; overflow: hidden;
-  }
+  /* MARQUEE */
+  .marquee-section { background: var(--fb-blue); padding: .75rem 0; overflow: hidden; }
   .marquee-track {
-    display: flex; gap: 3rem;
-    animation: marquee 22s linear infinite;
-    white-space: nowrap;
+    display: flex; gap: 3rem; animation: marquee 22s linear infinite; white-space: nowrap;
   }
   .marquee-track span {
     color: #fff; font-size: .78rem; font-weight: 600;
@@ -275,244 +204,187 @@
   .marquee-track span::before { content: '✦'; font-size: .5rem; opacity: .7; }
   @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-  /* ─── SECTION SHARED ─── */
+  /* SECTION SHARED */
   .section-label {
-    font-size: .75rem; font-weight: 600;
-    letter-spacing: .12em; text-transform: uppercase;
-    color: var(--fb-blue); margin-bottom: .6rem;
+    font-size: .75rem; font-weight: 600; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--fb-blue); margin-bottom: .6rem;
   }
   .section-title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 3vw, 2.8rem);
-    font-weight: 900; color: var(--fb-text); line-height: 1.15;
+    font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 900; color: var(--fb-text); line-height: 1.15;
   }
   .section-header {
-    display: flex; align-items: flex-end;
-    justify-content: space-between; margin-bottom: 2.5rem;
-    flex-wrap: wrap; gap: 1rem;
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;
   }
 
-  /* ─── PRODUCTS ─── */
-  .products {
-    padding: 5rem 3rem;
-    max-width: 1200px; margin: 0 auto;
-  }
-
-  .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
-    gap: 1.2rem;
-  }
-
+  /* PRODUCTS */
+  .products { padding: 5rem 3rem; max-width: 1200px; margin: 0 auto; }
   .product-card {
-    background: var(--fb-white);
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid var(--fb-border);
-    box-shadow: 0 1px 3px rgba(0,0,0,.08);
-    transition: transform .22s, box-shadow .22s;
-    cursor: pointer;
+    background: var(--fb-white); border-radius: 12px; overflow: hidden;
+    border: 1px solid var(--fb-border); box-shadow: 0 1px 3px rgba(0,0,0,.08);
+    transition: transform .22s, box-shadow .22s; cursor: pointer;
   }
-  .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 24px rgba(0,0,0,.12);
-  }
-
+  .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
   .card-visual {
-    height: 195px;
-    background: #FCE6A4 !important;
+    height: 195px; background: #FCE6A4 !important;
     display: flex; align-items: center; justify-content: center;
     position: relative; overflow: hidden;
   }
-  .card-visual svg { transition: transform .3s; }
-  .product-card:hover .card-visual svg { transform: scale(1.08) rotate(-2deg); }
-
-  .card-body {
-    padding: 1.2rem 1.4rem 1.4rem;
-    background: #fff;
-  }
-
+  .card-body { padding: 1.2rem 1.4rem 1.4rem; background: #fff; }
   .card-tag {
-    display: inline-block;
-    background: #E7F0FD; color: var(--fb-blue);
+    display: inline-block; background: #E7F0FD; color: var(--fb-blue);
     border-radius: 6px; padding: .18rem .65rem;
-    font-size: .7rem; font-weight: 700;
-    letter-spacing: .04em; margin-bottom: .6rem;
+    font-size: .7rem; font-weight: 700; letter-spacing: .04em; margin-bottom: .6rem;
   }
-
   .card-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.15rem; font-weight: 700;
+    font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700;
     color: var(--fb-text); margin-bottom: .3rem;
   }
   .card-desc { font-size: .83rem; color: var(--fb-muted); line-height: 1.55; }
-
   .card-footer {
-    display: flex; align-items: center;
-    justify-content: space-between; margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--fb-bg);
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--fb-bg);
   }
-
-  .card-price {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.35rem; font-weight: 700; color: var(--fb-blue);
-  }
+  .card-price { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: var(--fb-blue); }
   .card-price sup { font-size: .68rem; vertical-align: super; }
-
   .card-btn {
-    background: var(--fb-blue); color: #fff;
-    border: none; border-radius: 8px;
-    padding: .45rem 1rem;
-    font-size: .85rem; font-weight: 700;
+    background: var(--fb-blue); color: #fff; border: none; border-radius: 8px;
+    padding: .45rem 1rem; font-size: .85rem; font-weight: 700;
     cursor: pointer; transition: background .2s, transform .15s;
   }
   .card-btn:hover { background: var(--fb-blue-hover); transform: scale(1.05); }
 
-  /* ─── WHY US ─── */
-  .why {
-    background: var(--fb-white);
-    border-top: 1px solid var(--fb-border);
-    border-bottom: 1px solid var(--fb-border);
-    padding: 5rem 3rem;
+  /* TRAY CARD */
+  .tray-card-wrap { display: flex; justify-content: center; margin-bottom: 2.5rem; }
+  .tray-card { width: 100%; max-width: 520px; cursor: default; }
+  .tray-card:hover { transform: none; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+  .tray-visual {
+    height: 210px !important; overflow: hidden !important;
+    position: relative !important; background: #FCE6A4 !important;
   }
-  .why-inner { max-width: 1200px; margin: 0 auto; }
-
-  .why h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 3vw, 2.8rem);
-    font-weight: 900; color: var(--fb-text);
-    margin-bottom: 2.5rem; text-align: center;
-  }
-  .why h2 em { color: var(--fb-blue); font-style: italic; }
-
-  .features {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-    gap: 1.2rem;
-  }
-
-  .feature {
-    background: var(--fb-bg);
-    border: 1px solid var(--fb-border);
-    border-radius: 12px; padding: 1.8rem 1.5rem;
-    transition: border-color .2s, box-shadow .2s, transform .2s;
-  }
-  .feature:hover {
-    border-color: var(--fb-blue);
-    box-shadow: 0 4px 16px rgba(24,119,242,.1);
-    transform: translateY(-3px);
-  }
-
-  .feature-icon {
-    width: 50px; height: 50px;
-    background: #E7F0FD; border-radius: 12px;
+  .tray-slider { display: flex; width: 100%; height: 100%; position: relative; }
+  .tray-slide {
+    position: absolute; inset: 0;
     display: flex; align-items: center; justify-content: center;
-    margin-bottom: 1rem; font-size: 1.5rem;
+    opacity: 0; transform: translateX(100%);
+    transition: transform .42s cubic-bezier(.4,0,.2,1), opacity .42s;
+    pointer-events: none;
+  }
+  .tray-slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
+
+  /* REAL IMAGE STYLES */
+  .tray-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 8px;
   }
 
-  .feature h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.05rem; color: var(--fb-text); margin-bottom: .4rem;
+  /* SIZE PICKER */
+  .size-picker { display: flex; gap: .5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+  .size-btn {
+    flex: 1; min-width: 42px; background: var(--fb-bg);
+    border: 1.5px solid var(--fb-border); border-radius: 8px; padding: .45rem .2rem;
+    font-family: 'DM Sans', sans-serif; font-size: .85rem; font-weight: 700;
+    color: var(--fb-muted); cursor: pointer; transition: all .18s;
   }
+  .size-btn:hover { border-color: #E8A020; color: #C97A00; background: #FFF8EC; }
+  .size-btn.active {
+    background: #FCE6A4; border-color: #E8A020; color: #7A4A00;
+    box-shadow: 0 2px 8px rgba(232,160,32,.25);
+  }
+
+  /* DEALS */
+  .deals-section { margin-top: .5rem; }
+  .deals-header { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1.4rem; }
+  .deals-flame { font-size: 1.6rem; animation: flamePulse 1.4s ease-in-out infinite; }
+  @keyframes flamePulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.18) translateY(-2px)} }
+  .deals-label { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #E8A020; margin-bottom: .15rem; text-align: center; }
+  .deals-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--fb-text); text-align: center; }
+  .deals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+  .deal-card {
+    background: #fff; border: 1.5px solid var(--fb-border); border-radius: 14px;
+    padding: 1.5rem 1.4rem; position: relative; overflow: hidden;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .deal-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.1); }
+  .deal-card--featured {
+    background: linear-gradient(135deg, #FFF8E7 0%, #FFF3D0 100%);
+    border-color: #E8A020; box-shadow: 0 2px 12px rgba(232,160,32,.15);
+  }
+  .deal-badge {
+    display: inline-block; background: var(--fb-blue); color: #fff;
+    font-size: .7rem; font-weight: 800; letter-spacing: .06em;
+    padding: .22rem .7rem; border-radius: 6px; margin-bottom: .8rem;
+  }
+  .deal-badge--gold { background: linear-gradient(90deg, #E8A020, #F4C842); color: #5A3200; }
+  .deal-eggs { font-size: 1.8rem; margin-bottom: .5rem; }
+  .deal-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--fb-text); margin-bottom: .35rem; }
+  .deal-desc { font-size: .82rem; color: var(--fb-muted); line-height: 1.55; margin-bottom: 1rem; }
+  .deal-price-row { display: flex; align-items: baseline; gap: .6rem; margin-bottom: .9rem; }
+  .deal-price { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: var(--fb-blue); }
+  .deal-card--featured .deal-price { color: #C97A00; }
+  .deal-price sup { font-size: .7rem; vertical-align: super; }
+  .deal-save { background: #E8F5E9; color: #2E7D32; font-size: .72rem; font-weight: 700; padding: .18rem .55rem; border-radius: 6px; }
+  .deal-btn {
+    width: 100%; background: var(--fb-blue); color: #fff; border: none; border-radius: 9px;
+    padding: .6rem 1rem; font-family: 'DM Sans', sans-serif; font-size: .88rem; font-weight: 700;
+    cursor: pointer; transition: all .2s; letter-spacing: .02em;
+  }
+  .deal-btn:hover { background: var(--fb-blue-hover); transform: scale(1.02); }
+  .deal-btn--gold { background: linear-gradient(90deg, #E8A020, #F4C842); color: #4A2800; }
+  .deal-btn--gold:hover { filter: brightness(1.08); transform: scale(1.02); background: linear-gradient(90deg, #E8A020, #F4C842); }
+
+  /* WHY US */
+  .why { background: var(--fb-white); border-top: 1px solid var(--fb-border); border-bottom: 1px solid var(--fb-border); padding: 5rem 3rem; }
+  .why-inner { max-width: 1200px; margin: 0 auto; }
+  .why h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 900; color: var(--fb-text); margin-bottom: 2.5rem; text-align: center; }
+  .why h2 em { color: var(--fb-blue); font-style: italic; }
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.2rem; }
+  .feature { background: var(--fb-bg); border: 1px solid var(--fb-border); border-radius: 12px; padding: 1.8rem 1.5rem; transition: border-color .2s, box-shadow .2s, transform .2s; }
+  .feature:hover { border-color: var(--fb-blue); box-shadow: 0 4px 16px rgba(24,119,242,.1); transform: translateY(-3px); }
+  .feature-icon { width: 50px; height: 50px; background: #E7F0FD; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 1.5rem; }
+  .feature h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--fb-text); margin-bottom: .4rem; }
   .feature p { font-size: .83rem; color: var(--fb-muted); line-height: 1.6; }
 
-  /* ─── TESTIMONIALS ─── */
-  .testimonials {
-    padding: 5rem 3rem;
-    max-width: 1200px; margin: 0 auto; text-align: center;
-  }
-
-  .testi-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
-    gap: 1.2rem; margin-top: 2.5rem;
-  }
-
-  .testi-card {
-    background: var(--fb-white);
-    border-radius: 12px; padding: 1.8rem;
-    border: 1px solid var(--fb-border);
-    box-shadow: 0 1px 3px rgba(0,0,0,.07);
-    text-align: left;
-    transition: box-shadow .2s, transform .2s;
-  }
+  /* TESTIMONIALS */
+  .testimonials { padding: 5rem 3rem; max-width: 1200px; margin: 0 auto; text-align: center; }
+  .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(265px, 1fr)); gap: 1.2rem; margin-top: 2.5rem; }
+  .testi-card { background: var(--fb-white); border-radius: 12px; padding: 1.8rem; border: 1px solid var(--fb-border); box-shadow: 0 1px 3px rgba(0,0,0,.07); text-align: left; transition: box-shadow .2s, transform .2s; }
   .testi-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,.1); transform: translateY(-3px); }
-
   .stars { color: var(--fb-blue); font-size: .95rem; margin-bottom: .8rem; letter-spacing: .08em; }
   .testi-text { font-size: .88rem; line-height: 1.65; color: var(--fb-muted); margin-bottom: 1rem; font-style: italic; }
   .testi-author { display: flex; align-items: center; gap: .75rem; }
-  .testi-avatar {
-    width: 36px; height: 36px; border-radius: 50%;
-    background: #E7F0FD;
-    border: 2px solid var(--fb-blue);
-    display: flex; align-items: center; justify-content: center;
-    font-size: .95rem;
-  }
+  .testi-avatar { width: 36px; height: 36px; border-radius: 50%; background: #E7F0FD; border: 2px solid var(--fb-blue); display: flex; align-items: center; justify-content: center; font-size: .95rem; }
   .testi-name { font-weight: 600; font-size: .84rem; color: var(--fb-text); }
   .testi-loc { font-size: .73rem; color: var(--fb-muted); }
 
-  /* ─── CTA ─── */
-  .cta-section {
-    background: var(--fb-blue);
-    padding: 5rem 3rem; text-align: center; position: relative; overflow: hidden;
-  }
-  .cta-section::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(circle at 30% 70%, rgba(255,255,255,.08) 0, transparent 55%);
-  }
-  .cta-section h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 3.5vw, 3.2rem);
-    font-weight: 900; color: #fff; position: relative;
-  }
+  /* CTA */
+  .cta-section { background: var(--fb-blue); padding: 5rem 3rem; text-align: center; position: relative; overflow: hidden; }
+  .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 70%, rgba(255,255,255,.08) 0, transparent 55%); }
+  .cta-section h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 3.2rem); font-weight: 900; color: #fff; position: relative; }
   .cta-section p { color: rgba(255,255,255,.85); margin: 1rem 0 1.8rem; font-size: 1rem; position: relative; }
-
-  .btn-white {
-    background: #fff; color: var(--fb-blue);
-    border: none; border-radius: 8px;
-    padding: .85rem 2.2rem;
-    font-family: 'DM Sans', sans-serif;
-    font-size: .95rem; font-weight: 700;
-    cursor: pointer; transition: all .2s;
-    text-decoration: none; display: inline-block; position: relative;
-  }
+  .btn-white { background: #fff; color: var(--fb-blue); border: none; border-radius: 8px; padding: .85rem 2.2rem; font-family: 'DM Sans', sans-serif; font-size: .95rem; font-weight: 700; cursor: pointer; transition: all .2s; text-decoration: none; display: inline-block; position: relative; }
   .btn-white:hover { background: #E7F0FD; box-shadow: 0 4px 16px rgba(0,0,0,.2); transform: translateY(-2px); }
 
-  /* ─── FOOTER ─── */
-  footer {
-    background: var(--fb-white);
-    border-top: 1px solid var(--fb-border);
-    padding: 2rem 3rem;
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 1.2rem;
-  }
-
-  .footer-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem; font-weight: 900; color: var(--fb-text);
-    display: flex; align-items: center; gap: .6rem;
-  }
+  /* FOOTER */
+  footer { background: var(--fb-white); border-top: 1px solid var(--fb-border); padding: 2rem 3rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.2rem; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 900; color: var(--fb-text); display: flex; align-items: center; gap: .6rem; }
   .footer-logo .logo-egg { color: var(--fb-blue); }
-
   .footer-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
   .footer-links a { color: var(--fb-muted); text-decoration: none; font-size: .83rem; transition: color .2s; }
   .footer-links a:hover { color: var(--fb-blue); }
-
   .footer-copy { color: var(--fb-border); font-size: .75rem; }
 
-  /* ─── ANIMATIONS ─── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(22px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* ─── TOAST ─── */
+  /* TOAST */
   .toast {
-    position: fixed; bottom: 2rem; right: 2rem;
-    background: var(--fb-white);
-    border: 1px solid var(--fb-border);
-    color: var(--fb-text);
-    padding: .85rem 1.3rem; border-radius: 10px;
-    font-size: .86rem; z-index: 999;
+    position: fixed; bottom: 2rem; right: 2rem; background: var(--fb-white);
+    border: 1px solid var(--fb-border); color: var(--fb-text);
+    padding: .85rem 1.3rem; border-radius: 10px; font-size: .86rem; z-index: 999;
     display: flex; align-items: center; gap: .55rem;
     box-shadow: 0 4px 20px rgba(0,0,0,.15);
     transform: translateY(120%); opacity: 0;
@@ -520,7 +392,7 @@
   }
   .toast.show { transform: translateY(0); opacity: 1; }
 
-  /* ─── RESPONSIVE ─── */
+  /* RESPONSIVE */
   @media(max-width:768px) {
     nav { padding: .8rem 1.2rem; }
     .nav-links { display: none; }
@@ -542,7 +414,6 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <!-- Nav logo egg: real egg white/cream shell with golden yolk -->
     <svg viewBox="0 0 36 36" fill="none">
       <ellipse cx="18" cy="20" rx="13" ry="14" fill="#FFF8EE" stroke="#C9975A" stroke-width="1.8"/>
       <circle cx="18" cy="21" r="5.5" fill="#E8A020"/>
@@ -570,7 +441,6 @@
 
 <!-- HERO -->
 <section class="hero">
-  <!-- Floating bg eggs — creamy off-white -->
   <svg class="bg-egg" style="left:5%;width:55px;animation-duration:22s;animation-delay:-5s" viewBox="0 0 40 50"><ellipse cx="20" cy="27" rx="16" ry="20" fill="#F5E6C8"/></svg>
   <svg class="bg-egg" style="left:30%;width:35px;animation-duration:18s;animation-delay:-3s" viewBox="0 0 40 50"><ellipse cx="20" cy="27" rx="16" ry="20" fill="#EDD9A3"/></svg>
   <svg class="bg-egg" style="left:72%;width:50px;animation-duration:25s;animation-delay:-10s" viewBox="0 0 40 50"><ellipse cx="20" cy="27" rx="16" ry="20" fill="#F5E6C8"/></svg>
@@ -605,8 +475,6 @@
     <div class="egg-scene">
       <div class="orbit-ring"></div>
       <div class="orbit-ring"></div>
-
-      <!-- Orbiting eggs: white shell with golden yolk accent -->
       <div class="orbit-egg">
         <svg width="26" height="32" viewBox="0 0 28 34">
           <defs>
@@ -640,26 +508,20 @@
           <ellipse cx="14" cy="19" rx="12" ry="14" fill="#EDD9A3" opacity=".45" stroke="#C9975A" stroke-width="1"/>
         </svg>
       </div>
-
       <div class="glow-ring"></div>
-
-      <!-- Main hero egg: realistic egg colors -->
       <div class="main-egg-wrap">
         <svg width="195" height="235" viewBox="0 0 200 240" fill="none">
           <defs>
-            <!-- Shell gradient: warm white to cream -->
             <radialGradient id="shellG" cx="38%" cy="32%" r="65%">
               <stop offset="0%" stop-color="#FFFFFF"/>
               <stop offset="45%" stop-color="#FDF3E0"/>
               <stop offset="100%" stop-color="#E8C98A"/>
             </radialGradient>
-            <!-- Yolk gradient: deep golden orange -->
             <radialGradient id="yolkG" cx="40%" cy="38%" r="60%">
               <stop offset="0%" stop-color="#FFD84D"/>
               <stop offset="55%" stop-color="#F4A012"/>
               <stop offset="100%" stop-color="#C97A00"/>
             </radialGradient>
-            <!-- Albumen / egg white inner -->
             <radialGradient id="innerG" cx="45%" cy="40%" r="65%">
               <stop offset="0%" stop-color="#FFFEF8"/>
               <stop offset="100%" stop-color="#F5EDD0"/>
@@ -671,29 +533,20 @@
               <ellipse cx="100" cy="132" rx="80" ry="102"/>
             </clipPath>
           </defs>
-          <!-- Shadow under egg -->
           <ellipse cx="100" cy="230" rx="62" ry="9" fill="#C9975A" opacity="0.1"/>
-          <!-- Shell -->
           <ellipse cx="100" cy="132" rx="80" ry="102" fill="url(#shellG)" stroke="#D4A86A" stroke-width="1.5" filter="url(#eggShadow)"/>
-          <!-- Subtle shell texture lines -->
           <path d="M100 32 L94 52 L102 60 L96 78" stroke="#C9975A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.2"/>
           <path d="M148 90 L138 98 L142 108" stroke="#C9975A" stroke-width="1" stroke-linecap="round" opacity="0.15"/>
-          <!-- Shell highlight -->
           <ellipse cx="72" cy="66" rx="20" ry="30" fill="white" opacity="0.55" transform="rotate(-20 72 66)"/>
           <ellipse cx="78" cy="56" rx="8" ry="13" fill="white" opacity="0.72" transform="rotate(-20 78 56)"/>
-          <!-- Egg white pool -->
           <ellipse cx="100" cy="175" rx="68" ry="26" fill="url(#innerG)" clip-path="url(#eggClip)"/>
-          <!-- Yolk (golden) -->
           <circle cx="100" cy="168" r="38" fill="url(#yolkG)" clip-path="url(#eggClip)"/>
-          <!-- Yolk highlight -->
           <ellipse cx="87" cy="156" rx="10" ry="7" fill="white" opacity="0.38" transform="rotate(-20 87 156)"/>
           <ellipse cx="82" cy="152" rx="4" ry="3" fill="white" opacity="0.58" transform="rotate(-20 82 152)"/>
-          <!-- Tiny speckles on shell (like real eggs) -->
           <circle cx="130" cy="100" r="2.2" fill="#C9975A" opacity="0.25"/>
           <circle cx="145" cy="128" r="1.6" fill="#C9975A" opacity="0.2"/>
           <circle cx="60" cy="128" r="1.8" fill="#C9975A" opacity="0.2"/>
           <circle cx="75" cy="85" r="1.4" fill="#C9975A" opacity="0.18"/>
-          <!-- Decorative sparkles -->
           <path d="M170 58 L172 53 L174 58 L179 60 L174 62 L172 67 L170 62 L165 60 Z" fill="#E8A020" opacity="0.55"/>
           <path d="M24 98 L25.5 94 L27 98 L31 99.5 L27 101 L25.5 105 L24 101 L20 99.5 Z" fill="#E8A020" opacity="0.45"/>
         </svg>
@@ -715,191 +568,103 @@
   <div class="section-header">
     <div>
       <div class="section-label">Our Collection</div>
-      <h2 class="section-title">Pick Your Perfect Eggs</h2>
+      <h2 class="section-title">Pick Your Egg Sizes</h2>
     </div>
-    <a href="#" style="color:var(--fb-blue);text-decoration:none;font-size:.9rem;font-weight:600;">See all →</a>
+    <p style="color:#9AA0A6;font-size:.88rem;font-style:italic;margin:0;">Curated just from your touch.</p>
   </div>
-  <div class="product-grid">
 
-    <!-- Card 1: Classic White Egg -->
-    <div class="product-card">
-      <div class="card-visual">
-        <svg width="105" height="125" viewBox="0 0 110 130" fill="none">
-          <defs>
-            <radialGradient id="cg1" cx="35%" cy="28%" r="68%">
-              <stop offset="0%" stop-color="#FFFFFF"/>
-              <stop offset="60%" stop-color="#FBF6ED"/>
-              <stop offset="100%" stop-color="#EDD9B0"/>
-            </radialGradient>
-            <radialGradient id="cy1" cx="38%" cy="36%" r="60%">
-              <stop offset="0%" stop-color="#FFD84D"/>
-              <stop offset="55%" stop-color="#F4A012"/>
-              <stop offset="100%" stop-color="#C97A00"/>
-            </radialGradient>
-            <radialGradient id="cw1" cx="45%" cy="40%" r="65%">
-              <stop offset="0%" stop-color="#FFFEF8"/>
-              <stop offset="100%" stop-color="#F5EDD0"/>
-            </radialGradient>
-            <filter id="cs1"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#C9975A" flood-opacity="0.15"/></filter>
-            <clipPath id="cc1"><ellipse cx="55" cy="72" rx="44" ry="56"/></clipPath>
-          </defs>
-          <ellipse cx="55" cy="122" rx="34" ry="5.5" fill="#C9975A" opacity="0.08"/>
-          <ellipse cx="55" cy="72" rx="44" ry="56" fill="url(#cg1)" stroke="#D4B07A" stroke-width="1.6" filter="url(#cs1)"/>
-          <ellipse cx="55" cy="87" rx="38" ry="15" fill="url(#cw1)" clip-path="url(#cc1)"/>
-          <circle cx="55" cy="82" r="20" fill="url(#cy1)" clip-path="url(#cc1)"/>
-          <ellipse cx="44" cy="68" rx="10" ry="16" fill="white" opacity="0.52" transform="rotate(-20 44 68)"/>
-          <ellipse cx="41" cy="63" rx="4" ry="7" fill="white" opacity="0.72" transform="rotate(-20 41 63)"/>
-          <circle cx="72" cy="52" r="1.6" fill="#C9975A" opacity="0.22"/>
-          <path d="M88 26 L89.5 22 L91 26 L95 27.5 L91 29 L89.5 33 L88 29 L84 27.5 Z" fill="#E8A020" opacity="0.55"/>
-        </svg>
+  <!-- Single Egg Tray Card -->
+  <div class="tray-card-wrap">
+    <div class="product-card tray-card" id="trayCard">
+
+      <!-- Animated visual area with REAL images -->
+      <div class="card-visual tray-visual" id="trayVisual">
+        <div class="tray-slider" id="traySlider">
+
+          <div class="tray-slide active" id="slideXS">
+            <img src="images/lv_0_20260527151117.png" class="tray-img" alt="XS Egg Tray">
+          </div>
+
+          <div class="tray-slide" id="slideS">
+            <img src="images/lv_0_20260527151150.png" class="tray-img" alt="S Egg Tray">
+          </div>
+
+          <div class="tray-slide" id="slideM">
+            <img src="images/lv_0_20260527150854.png" class="tray-img" alt="M Egg Tray">
+          </div>
+
+          <div class="tray-slide" id="slideL">
+            <img src="images/lv_0_20260527150944.png" class="tray-img" alt="L Egg Tray">
+          </div>
+
+          <div class="tray-slide" id="slideXL">
+            <img src="images/lv_0_20260527151018.jpg" class="tray-img" alt="XL Egg Tray">
+          </div>
+
+        </div>
       </div>
+
+      <!-- Card body -->
       <div class="card-body">
-        <div class="card-tag">Best Seller</div>
-        <div class="card-name">Classic White Eggs</div>
-        <div class="card-desc">Mild flavor, smooth shell. Perfect for everyday cooking and baking.</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.7rem;">
+          <div class="card-name" style="margin:0;" id="trayName">Egg Tray — XS</div>
+          <div class="card-tag" id="trayBadge" style="margin:0;display:none;"></div>
+        </div>
+        <div class="card-desc" id="trayDesc" style="margin-bottom:1rem;">Small in size, big in flavor. Great for light eaters and growing families.</div>
+
+        <!-- Size picker -->
+        <div class="size-picker" id="sizePicker">
+          <button class="size-btn" data-size="XS" data-price="125" data-badge="" data-name="Egg Tray — XS" data-desc="Small in size, big in flavor. Great for light eaters and growing families." onclick="selectSize(this)">XS</button>
+          <button class="size-btn" data-size="S"  data-price="150" data-badge="" data-name="Egg Tray — S" data-desc="A satisfying dozen for everyday breakfasts and quick meals." onclick="selectSize(this)">S</button>
+          <button class="size-btn active" data-size="M"  data-price="160" data-badge="Best Seller" data-name="Egg Tray — M" data-desc="Our most-loved size — perfectly balanced for any kitchen." onclick="selectSize(this)">M</button>
+          <button class="size-btn" data-size="L"  data-price="210" data-badge="" data-name="Egg Tray — L" data-desc="Bigger yolks, richer taste. The go-to for serious home cooks." onclick="selectSize(this)">L</button>
+          <button class="size-btn" data-size="XL" data-price="230" data-badge="Guaranteed Egglicious" data-name="Egg Tray — XL" data-desc="Our biggest, richest, most egglicious eggs — guaranteed to impress." onclick="selectSize(this)">XL</button>
+        </div>
+
         <div class="card-footer">
-          <div class="card-price"><sup>₱</sup>89</div>
+          <div class="card-price"><sup>₱</sup><span id="trayPrice">160</span></div>
           <button class="card-btn" onclick="addToCart(this)">+ Add</button>
         </div>
       </div>
     </div>
-
-    <!-- Card 2: Brown Heritage Egg -->
-    <div class="product-card">
-      <div class="card-visual">
-        <svg width="105" height="125" viewBox="0 0 110 130" fill="none">
-          <defs>
-            <radialGradient id="cg2" cx="35%" cy="28%" r="68%">
-              <stop offset="0%" stop-color="#E8C68A"/>
-              <stop offset="55%" stop-color="#C9965A"/>
-              <stop offset="100%" stop-color="#9A6530"/>
-            </radialGradient>
-            <radialGradient id="cy2" cx="38%" cy="36%" r="60%">
-              <stop offset="0%" stop-color="#FFD84D"/>
-              <stop offset="55%" stop-color="#F4A012"/>
-              <stop offset="100%" stop-color="#C97A00"/>
-            </radialGradient>
-            <radialGradient id="cw2" cx="45%" cy="40%" r="65%">
-              <stop offset="0%" stop-color="#FFFEF8"/>
-              <stop offset="100%" stop-color="#F5EDD0"/>
-            </radialGradient>
-            <filter id="cs2"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#7A4A15" flood-opacity="0.18"/></filter>
-            <clipPath id="cc2"><ellipse cx="55" cy="72" rx="44" ry="56"/></clipPath>
-          </defs>
-          <ellipse cx="55" cy="122" rx="34" ry="5.5" fill="#9A6530" opacity="0.1"/>
-          <ellipse cx="55" cy="72" rx="44" ry="56" fill="url(#cg2)" stroke="#8B5520" stroke-width="1.6" filter="url(#cs2)"/>
-          <!-- Brown speckles -->
-          <circle cx="68" cy="48" r="1.8" fill="#7A4A15" opacity="0.3"/>
-          <circle cx="75" cy="62" r="1.4" fill="#7A4A15" opacity="0.25"/>
-          <circle cx="40" cy="55" r="1.6" fill="#7A4A15" opacity="0.22"/>
-          <circle cx="72" cy="88" r="1.2" fill="#7A4A15" opacity="0.2"/>
-          <ellipse cx="55" cy="87" rx="38" ry="15" fill="url(#cw2)" clip-path="url(#cc2)"/>
-          <circle cx="55" cy="82" r="22" fill="url(#cy2)" clip-path="url(#cc2)"/>
-          <ellipse cx="43" cy="67" rx="11" ry="17" fill="white" opacity="0.32" transform="rotate(-20 43 67)"/>
-          <ellipse cx="40" cy="62" rx="4" ry="6" fill="white" opacity="0.5" transform="rotate(-20 40 62)"/>
-        </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-tag">Farm Fresh</div>
-        <div class="card-name">Brown Heritage Eggs</div>
-        <div class="card-desc">Deep rich yolks, earthy flavor. From heritage breed hens raised on pasture.</div>
-        <div class="card-footer">
-          <div class="card-price"><sup>₱</sup>110</div>
-          <button class="card-btn" onclick="addToCart(this)">+ Add</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 3: Organic Free-Range — pale green/tinted shell (like Araucana eggs) -->
-    <div class="product-card">
-      <div class="card-visual">
-        <svg width="105" height="125" viewBox="0 0 110 130" fill="none">
-          <defs>
-            <radialGradient id="cg3" cx="35%" cy="28%" r="68%">
-              <stop offset="0%" stop-color="#FAFFF5"/>
-              <stop offset="55%" stop-color="#EBF5E0"/>
-              <stop offset="100%" stop-color="#C8DCA8"/>
-            </radialGradient>
-            <radialGradient id="cy3" cx="38%" cy="36%" r="60%">
-              <stop offset="0%" stop-color="#FFD84D"/>
-              <stop offset="55%" stop-color="#F4A012"/>
-              <stop offset="100%" stop-color="#C97A00"/>
-            </radialGradient>
-            <radialGradient id="cw3" cx="45%" cy="40%" r="65%">
-              <stop offset="0%" stop-color="#FEFFFE"/>
-              <stop offset="100%" stop-color="#F0F8E8"/>
-            </radialGradient>
-            <filter id="cs3"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#7A9A50" flood-opacity="0.15"/></filter>
-            <clipPath id="cc3"><ellipse cx="55" cy="72" rx="44" ry="56"/></clipPath>
-          </defs>
-          <ellipse cx="55" cy="122" rx="34" ry="5.5" fill="#7A9A50" opacity="0.08"/>
-          <ellipse cx="55" cy="72" rx="44" ry="56" fill="url(#cg3)" stroke="#A0C070" stroke-width="1.6" filter="url(#cs3)"/>
-          <ellipse cx="55" cy="87" rx="38" ry="15" fill="url(#cw3)" clip-path="url(#cc3)"/>
-          <circle cx="55" cy="79" r="19" fill="url(#cy3)" clip-path="url(#cc3)"/>
-          <ellipse cx="44" cy="67" rx="10" ry="16" fill="white" opacity="0.42" transform="rotate(-18 44 67)"/>
-          <ellipse cx="41" cy="62" rx="4" ry="6.5" fill="white" opacity="0.62" transform="rotate(-18 41 62)"/>
-          <circle cx="70" cy="50" r="1.4" fill="#7A9A50" opacity="0.2"/>
-          <path d="M88 28 L89.5 24 L91 28 L95 29.5 L91 31 L89.5 35 L88 31 L84 29.5 Z" fill="#E8A020" opacity="0.5"/>
-          <path d="M20 93 L21 90 L22 93 L25 94 L22 95 L21 98 L20 95 L17 94 Z" fill="#E8A020" opacity="0.4"/>
-        </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-tag">Organic</div>
-        <div class="card-name">Organic Free-Range</div>
-        <div class="card-desc">Certified organic feed, no pesticides. The healthiest choice for your family.</div>
-        <div class="card-footer">
-          <div class="card-price"><sup>₱</sup>145</div>
-          <button class="card-btn" onclick="addToCart(this)">+ Add</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 4: Duck Eggs — larger, slightly blue-white shell -->
-    <div class="product-card">
-      <div class="card-visual">
-        <svg width="105" height="125" viewBox="0 0 110 130" fill="none">
-          <defs>
-            <radialGradient id="cg4" cx="35%" cy="28%" r="68%">
-              <stop offset="0%" stop-color="#FFFFFF"/>
-              <stop offset="50%" stop-color="#F0F6FF"/>
-              <stop offset="100%" stop-color="#C8D8F0"/>
-            </radialGradient>
-            <radialGradient id="cy4" cx="38%" cy="36%" r="60%">
-              <stop offset="0%" stop-color="#FFD84D"/>
-              <stop offset="55%" stop-color="#F4A012"/>
-              <stop offset="100%" stop-color="#C97A00"/>
-            </radialGradient>
-            <radialGradient id="cw4" cx="45%" cy="40%" r="65%">
-              <stop offset="0%" stop-color="#FEFFFE"/>
-              <stop offset="100%" stop-color="#EEF4FF"/>
-            </radialGradient>
-            <filter id="cs4"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#7090C0" flood-opacity="0.15"/></filter>
-            <clipPath id="cc4"><ellipse cx="55" cy="70" rx="40" ry="60"/></clipPath>
-          </defs>
-          <ellipse cx="55" cy="122" rx="32" ry="5" fill="#7090C0" opacity="0.08"/>
-          <!-- Duck eggs are more elongated and bluish-white -->
-          <ellipse cx="55" cy="70" rx="40" ry="60" fill="url(#cg4)" stroke="#A0B8D8" stroke-width="1.6" filter="url(#cs4)"/>
-          <ellipse cx="55" cy="86" rx="34" ry="14" fill="url(#cw4)" clip-path="url(#cc4)"/>
-          <circle cx="55" cy="78" r="17" fill="url(#cy4)" clip-path="url(#cc4)"/>
-          <ellipse cx="43" cy="58" rx="11" ry="18" fill="white" opacity="0.38" transform="rotate(-22 43 58)"/>
-          <ellipse cx="40" cy="53" rx="5" ry="8" fill="white" opacity="0.55" transform="rotate(-22 40 53)"/>
-          <circle cx="74" cy="50" r="1.8" fill="#7090C0" opacity="0.25"/>
-          <circle cx="78" cy="68" r="1.3" fill="#7090C0" opacity="0.2"/>
-          <path d="M88 30 L89.5 26 L91 30 L95 31.5 L91 33 L89.5 37 L88 33 L84 31.5 Z" fill="#E8A020" opacity="0.5"/>
-        </svg>
-      </div>
-      <div class="card-body">
-        <div class="card-tag">Premium</div>
-        <div class="card-name">Duck Eggs</div>
-        <div class="card-desc">Richer, creamier taste. Beloved by bakers for fluffier pastries and cakes.</div>
-        <div class="card-footer">
-          <div class="card-price"><sup>₱</sup>185</div>
-          <button class="card-btn" onclick="addToCart(this)">+ Add</button>
-        </div>
-      </div>
-    </div>
-
   </div>
+
+  <!-- Buy 1 Take 1 Deals -->
+  <div class="deals-section">
+    <div class="deals-header">
+      <div class="deals-flame">🔥</div>
+      <div>
+        <div class="deals-label">Limited Offers</div>
+        <div class="deals-title">Buy 1 Take 1 Deals</div>
+      </div>
+      <div class="deals-flame">🔥</div>
+    </div>
+    <div class="deals-grid">
+      <div class="deal-card">
+        <div class="deal-badge">B1T1</div>
+        <div class="deal-eggs">🥚🥚</div>
+        <div class="deal-name">2 × Medium Trays</div>
+        <div class="deal-desc">Double the goodness — two M trays for the price of almost one.</div>
+        <div class="deal-price-row">
+          <div class="deal-price"><sup>₱</sup>285</div>
+          <div class="deal-save">Save ₱35</div>
+        </div>
+        <button class="deal-btn" onclick="addToCart(this)">Grab Deal →</button>
+      </div>
+      <div class="deal-card deal-card--featured">
+        <div class="deal-badge deal-badge--gold">B1T1 ⭐</div>
+        <div class="deal-eggs">🥚🥚</div>
+        <div class="deal-name">1 Medium + 1 Small</div>
+        <div class="deal-desc">Mix & match — a medium and a small tray together at a steal.</div>
+        <div class="deal-price-row">
+          <div class="deal-price"><sup>₱</sup>160</div>
+          <div class="deal-save">Save ₱150</div>
+        </div>
+        <button class="deal-btn deal-btn--gold" onclick="addToCart(this)">Grab Deal →</button>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <!-- WHY US -->
@@ -993,6 +758,67 @@
 
 <script>
   let cartCount = 0;
+  const sizeOrder = ['XS','S','M','L','XL'];
+  let currentSize = 'XS';
+
+  function selectSize(btn) {
+    const newSize = btn.dataset.size;
+    if (newSize === currentSize) return;
+
+    const oldIdx = sizeOrder.indexOf(currentSize);
+    const newIdx = sizeOrder.indexOf(newSize);
+    const goingRight = newIdx > oldIdx;
+
+    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const oldSlide = document.querySelector('.tray-slide.active');
+    const newSlide = document.getElementById('slide' + newSize);
+
+    newSlide.style.transform = goingRight ? 'translateX(100%)' : 'translateX(-100%)';
+    newSlide.style.opacity = '0';
+    newSlide.style.transition = 'none';
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        newSlide.style.transition = '';
+        oldSlide.classList.remove('active');
+        oldSlide.style.transform = goingRight ? 'translateX(-100%)' : 'translateX(100%)';
+        oldSlide.style.opacity = '0';
+        newSlide.style.transform = 'translateX(0)';
+        newSlide.style.opacity = '1';
+        newSlide.classList.add('active');
+        setTimeout(() => {
+          oldSlide.style.transform = '';
+          oldSlide.style.opacity = '';
+          oldSlide.style.transition = '';
+        }, 450);
+      });
+    });
+
+    document.getElementById('trayName').textContent = btn.dataset.name;
+    document.getElementById('trayPrice').textContent = btn.dataset.price;
+    document.getElementById('trayDesc').textContent = btn.dataset.desc;
+    const badge = document.getElementById('trayBadge');
+    badge.textContent = btn.dataset.badge;
+    badge.style.display = btn.dataset.badge ? 'inline-block' : 'none';
+
+    currentSize = newSize;
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const mBtn = document.querySelector('[data-size="M"]');
+    if (mBtn) {
+      currentSize = 'XS';
+      const mSlide = document.getElementById('slideM');
+      mSlide.style.transition = 'none';
+      mSlide.style.transform = 'translateX(100%)';
+      mSlide.style.opacity = '0';
+      document.getElementById('slideXS').classList.add('active');
+      setTimeout(() => selectSize(mBtn), 50);
+    }
+  });
+
   function addToCart(btn) {
     cartCount++;
     const badge = document.getElementById('cartCount');
@@ -1006,19 +832,25 @@
     btn.style.background = '#0D5FCC';
     setTimeout(() => { btn.textContent = '+ Add'; btn.style.background = ''; }, 1000);
   }
+
   function toggleCart() {
     const toast = document.getElementById('toast');
     toast.textContent = cartCount === 0 ? '🛒 Your cart is empty' : `🥚 ${cartCount} item(s) in cart`;
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 2000);
   }
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) { e.target.style.animation = 'fadeUp .55s ease forwards'; e.target.style.opacity = '1'; }
+      if (e.isIntersecting) {
+        e.target.style.animation = 'fadeUp .55s ease forwards';
+        e.target.style.opacity = '1';
+      }
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.product-card, .feature, .testi-card').forEach(el => {
-    el.style.opacity = '0'; observer.observe(el);
+    el.style.opacity = '0';
+    observer.observe(el);
   });
 </script>
 </body>
