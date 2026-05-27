@@ -406,7 +406,7 @@
 
   <div class="hero-text">
     <div class="hero-badge">🥚 Creamy Orange Yolk Eggs</div>
-    <h1>One of the <em>Freshest</em><br>Eggs in Pangasinan</h1>
+    <h1>One of the <em>Freshest</em><br>Eggs in <span style="background:linear-gradient(90deg,#e8e800 0%,#0038a8 45%,#ce1126 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Pangasinan</span></h1>
     <p class="hero-sub">Hand-harvested every single day from our lovingly cared-for manok, with eggstraordinary yolks that you'll love and should've have tasted long ago.</p>
     <div class="hero-actions">
       <a href="#products" class="btn-primary">Browse Eggs 🥚</a>
@@ -594,11 +594,15 @@
 <!-- WHY US -->
 <section class="why" id="why">
   <div class="why-inner">
-    <div class="section-label" style="text-align:center">Why Us</div>
-    <div style="display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:2.5rem;">
-      <div id="confused-icon" style="width:64px;height:64px;flex-shrink:0;"></div>
-      <h2 style="margin-bottom:0;">୨ Why Choose <em>Urbest?</em> ৎ</h2>
-      <div id="question-icon" style="width:64px;height:64px;flex-shrink:0;"></div>
+    <div style="position:relative;text-align:center;margin-bottom:2.5rem;">
+      <!-- Lottie icons absolutely positioned behind, flanking the label row -->
+      <div id="confused-icon" style="position:absolute;left:50%;transform:translateX(calc(-50% - 90px));top:0;width:48px;height:48px;z-index:0;pointer-events:none;"></div>
+      <div id="question-icon" style="position:absolute;left:50%;transform:translateX(calc(-50% + 90px - 48px));top:0;width:48px;height:48px;z-index:0;pointer-events:none;"></div>
+      <!-- Text on top -->
+      <div style="position:relative;z-index:1;">
+        <div class="section-label" style="margin-bottom:.4rem;">Why Us</div>
+        <h2 style="margin-bottom:0;white-space:nowrap;font-size:clamp(1.15rem,2vw,1.9rem);">୨ Why Choose <em>Urbest?</em> ৎ</h2>
+      </div>
     </div>
     <div class="features">
       <div class="feature">
@@ -785,7 +789,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 <script>
   // Confused emoji — autoplay, looping
-  lottie.loadAnimation({
+  var confusedAnim = lottie.loadAnimation({
     container: document.getElementById('confused-icon'),
     renderer: 'svg',
     loop: true,
@@ -803,17 +807,58 @@
   });
 
   var qmarkPlayed = false;
+  var whyVisible = false;
+  var starLoaded = false;
+
   var whySection = document.getElementById('why');
-  var qmarkObserver = new IntersectionObserver(function(entries) {
+
+  var whyObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
-      if (entry.isIntersecting && !qmarkPlayed) {
-        qmarkPlayed = true;
-        qmarkAnim.play();
-        qmarkObserver.disconnect();
+      if (entry.isIntersecting) {
+        // Scrolled INTO why section
+        whyVisible = true;
+
+        // Play question mark once
+        if (!qmarkPlayed) {
+          qmarkPlayed = true;
+          qmarkAnim.play();
+        }
+
+        // If star was loaded, swap back to confused
+        if (starLoaded) {
+          var el = document.getElementById('confused-icon');
+          confusedAnim.destroy();
+          starLoaded = false;
+          confusedAnim = lottie.loadAnimation({
+            container: el,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'icons/902a54ca-1152-11ee-bd66-f7deb1eae857.json'
+          });
+        }
+      } else {
+        // Scrolled OUT (above) — swap confused to star impressed
+        if (whyVisible && !starLoaded) {
+          whyVisible = false;
+          starLoaded = true;
+          var el = document.getElementById('confused-icon');
+          confusedAnim.destroy();
+          confusedAnim = lottie.loadAnimation({
+            container: el,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'icons/b46e9a30-1152-11ee-ad30-d7b2a6e170de.json'
+          });
+        } else {
+          whyVisible = false;
+        }
       }
     });
-  }, { threshold: 0.3 });
-  qmarkObserver.observe(whySection);
+  }, { threshold: 0.2 });
+
+  whyObserver.observe(whySection);
 </script>
 </body>
 </html>
