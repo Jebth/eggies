@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Urbest Eggs — Farm-Fresh, Always First</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 <style>
   :root {
     --fb-blue:      #1877F2;
@@ -238,10 +239,14 @@
     font-size: .7rem; font-weight: 700; letter-spacing: .04em; margin-bottom: .6rem;
   }
   .card-name {
-    font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700;
+    font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700;
     color: var(--fb-text); margin-bottom: .3rem;
   }
-  .card-desc { font-size: .83rem; color: var(--fb-muted); line-height: 1.55; }
+  .card-stock {
+    font-size: .82rem; color: var(--fb-muted); line-height: 1.55;
+    font-weight: 500;
+  }
+  .card-stock .stock-num { color: #E8A020; font-weight: 700; }
   .card-footer {
     display: flex; align-items: center; justify-content: space-between;
     margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--fb-bg);
@@ -275,11 +280,10 @@
 
   /* REAL IMAGE STYLES */
   .tray-img {
-    width: 115%;
-    height: 115%;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
-    object-position: center 35%;
-    margin-top: -12px;
+    padding: 8px;
   }
 
   /* SIZE PICKER */
@@ -298,11 +302,27 @@
 
   /* DEALS */
   .deals-section { margin-top: .5rem; }
-  .deals-header { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1.4rem; }
-  .deals-flame { font-size: 1.6rem; animation: flamePulse 1.4s ease-in-out infinite; }
-  @keyframes flamePulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.18) translateY(-2px)} }
-  .deals-label { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #E8A020; margin-bottom: .15rem; text-align: center; }
-  .deals-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--fb-text); text-align: center; }
+  .deals-header {
+    display: flex; align-items: center; justify-content: center;
+    gap: 1rem; margin-bottom: 1.4rem;
+  }
+  .lottie-fire { width: 48px; height: 48px; flex-shrink: 0; }
+  .deals-label {
+    font-size: .7rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: #E8A020;
+    margin-bottom: .15rem; text-align: center;
+  }
+  .deals-title {
+    font-family: 'Playfair Display', serif; font-size: 1.5rem;
+    font-weight: 900; color: var(--fb-text); text-align: center;
+  }
+  /* The ornate LIMITED OFFERS label */
+  .limited-offers-label {
+    font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+    color: #E8A020; text-align: center; margin-bottom: .18rem;
+    font-style: normal;
+  }
+
   .deals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
   .deal-card {
     background: #fff; border: 1.5px solid var(--fb-border); border-radius: 14px;
@@ -320,9 +340,23 @@
     padding: .22rem .7rem; border-radius: 6px; margin-bottom: .8rem;
   }
   .deal-badge--gold { background: linear-gradient(90deg, #E8A020, #F4C842); color: #5A3200; }
-  .deal-eggs { font-size: 1.8rem; margin-bottom: .5rem; }
+
+  /* Deal images row */
+  .deal-images {
+    display: flex; gap: 6px; margin-bottom: .8rem; align-items: center;
+  }
+  .deal-img {
+    width: 56px; height: 56px; object-fit: contain;
+    background: #FCE6A4; border-radius: 8px; padding: 4px;
+    border: 1px solid #E8D89A;
+  }
+
   .deal-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--fb-text); margin-bottom: .35rem; }
-  .deal-desc { font-size: .82rem; color: var(--fb-muted); line-height: 1.55; margin-bottom: 1rem; }
+  .deal-stock {
+    font-size: .82rem; color: var(--fb-muted); line-height: 1.55;
+    margin-bottom: 1rem; font-weight: 500;
+  }
+  .deal-stock .stock-num { color: #E8A020; font-weight: 700; }
   .deal-price-row { display: flex; align-items: baseline; gap: .6rem; margin-bottom: .9rem; }
   .deal-price { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: var(--fb-blue); }
   .deal-card--featured .deal-price { color: #C97A00; }
@@ -583,23 +617,23 @@
         <div class="tray-slider" id="traySlider">
 
           <div class="tray-slide active" id="slideXS">
-            <img src="images/lv_0_20260527155549.png" class="tray-img" alt="XS Egg Tray">
+            <img src="images/lv_0_20260527151117.png" class="tray-img" alt="XS Egg Tray">
           </div>
 
           <div class="tray-slide" id="slideS">
-            <img src="images/lv_0_20260527155709.png" class="tray-img" alt="S Egg Tray">
+            <img src="images/lv_0_20260527151150.png" class="tray-img" alt="S Egg Tray">
           </div>
 
           <div class="tray-slide" id="slideM">
-            <img src="images/lv_0_20260527155804.png" class="tray-img" alt="M Egg Tray">
+            <img src="images/lv_0_20260527150854.png" class="tray-img" alt="M Egg Tray">
           </div>
 
           <div class="tray-slide" id="slideL">
-            <img src="images/lv_0_20260527155852.png" class="tray-img" alt="L Egg Tray">
+            <img src="images/lv_0_20260527150944.png" class="tray-img" alt="L Egg Tray">
           </div>
 
           <div class="tray-slide" id="slideXL">
-            <img src="images/lv_0_20260527154820.png" class="tray-img" alt="XL Egg Tray">
+            <img src="images/lv_0_20260527151018.jpg" class="tray-img" alt="XL Egg Tray">
           </div>
 
         </div>
@@ -607,19 +641,19 @@
 
       <!-- Card body -->
       <div class="card-body">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.7rem;">
-          <div class="card-name" style="margin:0;" id="trayName">Egg Tray — XS</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;">
+          <div class="card-name" style="margin:0;" id="trayName">Egg Tray ᯓ Extra Small</div>
           <div class="card-tag" id="trayBadge" style="margin:0;display:none;"></div>
         </div>
-        <div class="card-desc" id="trayDesc" style="margin-bottom:1rem;">Small in size, big in flavor. Great for light eaters and growing families.</div>
+        <div class="card-stock" id="trayStock">Stock: <span class="stock-num" id="trayStockNum">&lt;1</span></div>
 
         <!-- Size picker -->
-        <div class="size-picker" id="sizePicker">
-          <button class="size-btn" data-size="XS" data-price="125" data-badge="" data-name="Egg Tray — XS" data-desc="Small in size, big in flavor. Great for light eaters and growing families." onclick="selectSize(this)">XS</button>
-          <button class="size-btn" data-size="S"  data-price="150" data-badge="" data-name="Egg Tray — S" data-desc="A satisfying dozen for everyday breakfasts and quick meals." onclick="selectSize(this)">S</button>
-          <button class="size-btn active" data-size="M"  data-price="160" data-badge="Best Seller" data-name="Egg Tray — M" data-desc="Our most-loved size — perfectly balanced for any kitchen." onclick="selectSize(this)">M</button>
-          <button class="size-btn" data-size="L"  data-price="210" data-badge="" data-name="Egg Tray — L" data-desc="Bigger yolks, richer taste. The go-to for serious home cooks." onclick="selectSize(this)">L</button>
-          <button class="size-btn" data-size="XL" data-price="230" data-badge="Guaranteed Egglicious" data-name="Egg Tray — XL" data-desc="Our biggest, richest, most egglicious eggs — guaranteed to impress." onclick="selectSize(this)">XL</button>
+        <div class="size-picker" id="sizePicker" style="margin-top:.9rem;">
+          <button class="size-btn" data-size="XS" data-price="125" data-badge="" data-name="Egg Tray ᯓ Extra Small" data-stock="&lt;1" onclick="selectSize(this)">XS</button>
+          <button class="size-btn" data-size="S"  data-price="150" data-badge="" data-name="Egg Tray ᯓ Small" data-stock="26" onclick="selectSize(this)">S</button>
+          <button class="size-btn" data-size="M"  data-price="160" data-badge="Best Seller" data-name="Egg Tray ᯓ Medium" data-stock="9" onclick="selectSize(this)">M</button>
+          <button class="size-btn" data-size="L"  data-price="210" data-badge="" data-name="Egg Tray ᯓ Large" data-stock="9" onclick="selectSize(this)">L</button>
+          <button class="size-btn" data-size="XL" data-price="230" data-badge="Guaranteed Egglicious" data-name="Egg Tray ᯓ Extra Large" data-stock="16" onclick="selectSize(this)">XL</button>
         </div>
 
         <div class="card-footer">
@@ -633,36 +667,47 @@
   <!-- Buy 1 Take 1 Deals -->
   <div class="deals-section">
     <div class="deals-header">
-      <div class="deals-flame">🔥</div>
+      <div class="lottie-fire" id="lottieLeft"></div>
       <div>
-        <div class="deals-label">Limited Offers</div>
+        <div class="limited-offers-label">─── ୨ LIMITED OFFERS ৎ ───</div>
         <div class="deals-title">Buy 1 Take 1 Deals</div>
       </div>
-      <div class="deals-flame">🔥</div>
+      <div class="lottie-fire" id="lottieRight"></div>
     </div>
     <div class="deals-grid">
+
+      <!-- Deal 1: 2x Medium -->
       <div class="deal-card">
         <div class="deal-badge">B1T1</div>
-        <div class="deal-eggs">🥚🥚</div>
+        <div class="deal-images">
+          <img src="images/lv_0_20260527150854.png" class="deal-img" alt="Medium Egg Tray">
+          <img src="images/lv_0_20260527150854.png" class="deal-img" alt="Medium Egg Tray">
+        </div>
         <div class="deal-name">2 × Medium Trays</div>
-        <div class="deal-desc">Double the goodness — two M trays for the price of almost one.</div>
+        <div class="deal-stock">Stock: <span class="stock-num">2 deals left</span></div>
         <div class="deal-price-row">
           <div class="deal-price"><sup>₱</sup>285</div>
           <div class="deal-save">Save ₱35</div>
         </div>
         <button class="deal-btn" onclick="addToCart(this)">Grab Deal →</button>
       </div>
+
+      <!-- Deal 2: 1 Medium + 1 Small -->
       <div class="deal-card deal-card--featured">
         <div class="deal-badge deal-badge--gold">B1T1 ⭐</div>
-        <div class="deal-eggs">🥚🥚</div>
+        <div class="deal-images">
+          <img src="images/lv_0_20260527150854.png" class="deal-img" alt="Medium Egg Tray">
+          <img src="images/lv_0_20260527151150.png" class="deal-img" alt="Small Egg Tray">
+        </div>
         <div class="deal-name">1 Medium + 1 Small</div>
-        <div class="deal-desc">Mix & match — a medium and a small tray together at a steal.</div>
+        <div class="deal-stock">Stock: <span class="stock-num">5 deals left</span></div>
         <div class="deal-price-row">
           <div class="deal-price"><sup>₱</sup>160</div>
           <div class="deal-save">Save ₱150</div>
         </div>
         <button class="deal-btn deal-btn--gold" onclick="addToCart(this)">Grab Deal →</button>
       </div>
+
     </div>
   </div>
 
@@ -762,6 +807,30 @@
   const sizeOrder = ['XS','S','M','L','XL'];
   let currentSize = 'XS';
 
+  // Load Lottie fire icons (static, no autoplay animation)
+  window.addEventListener('DOMContentLoaded', () => {
+    const fireOpts = {
+      path: 'icons/9d140e5e-1121-11ef-a147-0f8f2c5fd446.json',
+      renderer: 'svg',
+      loop: false,
+      autoplay: false,
+    };
+    lottie.loadAnimation({ ...fireOpts, container: document.getElementById('lottieLeft') });
+    lottie.loadAnimation({ ...fireOpts, container: document.getElementById('lottieRight') });
+
+    // Init size to M
+    const mBtn = document.querySelector('[data-size="M"]');
+    if (mBtn) {
+      currentSize = 'XS';
+      const mSlide = document.getElementById('slideM');
+      mSlide.style.transition = 'none';
+      mSlide.style.transform = 'translateX(100%)';
+      mSlide.style.opacity = '0';
+      document.getElementById('slideXS').classList.add('active');
+      setTimeout(() => selectSize(mBtn), 50);
+    }
+  });
+
   function selectSize(btn) {
     const newSize = btn.dataset.size;
     if (newSize === currentSize) return;
@@ -799,26 +868,13 @@
 
     document.getElementById('trayName').textContent = btn.dataset.name;
     document.getElementById('trayPrice').textContent = btn.dataset.price;
-    document.getElementById('trayDesc').textContent = btn.dataset.desc;
+    document.getElementById('trayStockNum').innerHTML = btn.dataset.stock;
     const badge = document.getElementById('trayBadge');
     badge.textContent = btn.dataset.badge;
     badge.style.display = btn.dataset.badge ? 'inline-block' : 'none';
 
     currentSize = newSize;
   }
-
-  window.addEventListener('DOMContentLoaded', () => {
-    const mBtn = document.querySelector('[data-size="M"]');
-    if (mBtn) {
-      currentSize = 'XS';
-      const mSlide = document.getElementById('slideM');
-      mSlide.style.transition = 'none';
-      mSlide.style.transform = 'translateX(100%)';
-      mSlide.style.opacity = '0';
-      document.getElementById('slideXS').classList.add('active');
-      setTimeout(() => selectSize(mBtn), 50);
-    }
-  });
 
   function addToCart(btn) {
     cartCount++;
@@ -829,9 +885,10 @@
     const toast = document.getElementById('toast');
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 2200);
+    const orig = btn.textContent;
     btn.textContent = '✓ Added';
     btn.style.background = '#0D5FCC';
-    setTimeout(() => { btn.textContent = '+ Add'; btn.style.background = ''; }, 1000);
+    setTimeout(() => { btn.textContent = orig; btn.style.background = ''; }, 1000);
   }
 
   function toggleCart() {
