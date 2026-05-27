@@ -238,7 +238,7 @@
     font-size: .7rem; font-weight: 700; letter-spacing: .04em; margin-bottom: .6rem;
   }
   .card-name {
-    font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700;
+    font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700;
     color: var(--fb-text); margin-bottom: .3rem;
   }
   .card-desc { font-size: .83rem; color: var(--fb-muted); line-height: 1.55; }
@@ -298,8 +298,8 @@
   /* DEALS */
   .deals-section { margin-top: .5rem; }
   .deals-header { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1.4rem; }
-  .deals-flame { font-size: 1.6rem; animation: flamePulse 1.4s ease-in-out infinite; }
-  @keyframes flamePulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.18) translateY(-2px)} }
+  .deals-flame { font-size: 1.6rem; }
+  
   .deals-label { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #E8A020; margin-bottom: .15rem; text-align: center; }
   .deals-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--fb-text); text-align: center; }
   .deals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
@@ -606,24 +606,24 @@
 
       <!-- Card body -->
       <div class="card-body">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.7rem;">
-          <div class="card-name" style="margin:0;" id="trayName">Egg Tray — XS</div>
-          <div class="card-tag" id="trayBadge" style="margin:0;display:none;"></div>
-        </div>
-        <div class="card-desc" id="trayDesc" style="margin-bottom:1rem;">Small in size, big in flavor. Great for light eaters and growing families.</div>
+        <div class="card-name" style="margin-bottom:.7rem;" id="trayName">Egg Tray ᯓ Extra Small</div>
+        <div class="card-desc" id="trayDesc" style="margin-bottom:1rem;">Stock: &lt;1</div>
 
         <!-- Size picker -->
         <div class="size-picker" id="sizePicker">
-          <button class="size-btn" data-size="XS" data-price="125" data-badge="" data-name="Egg Tray — XS" data-desc="Small in size, big in flavor. Great for light eaters and growing families." onclick="selectSize(this)">XS</button>
-          <button class="size-btn" data-size="S"  data-price="150" data-badge="" data-name="Egg Tray — S" data-desc="A satisfying dozen for everyday breakfasts and quick meals." onclick="selectSize(this)">S</button>
-          <button class="size-btn active" data-size="M"  data-price="160" data-badge="Best Seller" data-name="Egg Tray — M" data-desc="Our most-loved size — perfectly balanced for any kitchen." onclick="selectSize(this)">M</button>
-          <button class="size-btn" data-size="L"  data-price="210" data-badge="" data-name="Egg Tray — L" data-desc="Bigger yolks, richer taste. The go-to for serious home cooks." onclick="selectSize(this)">L</button>
-          <button class="size-btn" data-size="XL" data-price="230" data-badge="Guaranteed Egglicious" data-name="Egg Tray — XL" data-desc="Our biggest, richest, most egglicious eggs — guaranteed to impress." onclick="selectSize(this)">XL</button>
+          <button class="size-btn" data-size="XS" data-price="125" data-badge="" data-name="Egg Tray ᯓ Extra Small" data-desc="Stock: &lt;1" onclick="selectSize(this)">XS</button>
+          <button class="size-btn" data-size="S"  data-price="150" data-badge="" data-name="Egg Tray ᯓ Small" data-desc="Stock: 26" onclick="selectSize(this)">S</button>
+          <button class="size-btn active" data-size="M"  data-price="160" data-badge="Best Seller" data-name="Egg Tray ᯓ Medium" data-desc="Stock: 9" onclick="selectSize(this)">M</button>
+          <button class="size-btn" data-size="L"  data-price="210" data-badge="" data-name="Egg Tray ᯓ Large" data-desc="Stock: 9" onclick="selectSize(this)">L</button>
+          <button class="size-btn" data-size="XL" data-price="230" data-badge="Guaranteed Egglicious" data-name="Egg Tray ᯓ Extra Large" data-desc="Stock: 16" onclick="selectSize(this)">XL</button>
         </div>
 
         <div class="card-footer">
           <div class="card-price"><sup>₱</sup><span id="trayPrice">160</span></div>
-          <button class="card-btn" onclick="addToCart(this)">+ Add</button>
+          <div style="display:flex;align-items:center;gap:.6rem;">
+            <div class="card-tag" id="trayBadgeRight" style="margin:0;display:none;"></div>
+            <button class="card-btn" onclick="addToCart(this)">+ Add</button>
+          </div>
         </div>
       </div>
     </div>
@@ -632,33 +632,39 @@
   <!-- Buy 1 Take 1 Deals -->
   <div class="deals-section">
     <div class="deals-header">
-      <div class="deals-flame">🔥</div>
+      <div id="fire-icon" style="width:48px;height:48px;flex-shrink:0;"></div>
       <div>
-        <div class="deals-label">Limited Offers</div>
+        <div class="deals-label">─── ୨ LIMITED OFFERS ৎ ───</div>
         <div class="deals-title">Buy 1 Take 1 Deals</div>
       </div>
-      <div class="deals-flame">🔥</div>
+      <div id="fire-icon-2" style="width:48px;height:48px;flex-shrink:0;"></div>
     </div>
     <div class="deals-grid">
       <div class="deal-card">
-        <div class="deal-badge">B1T1</div>
-        <div class="deal-eggs">🥚🥚</div>
         <div class="deal-name">2 × Medium Trays</div>
-        <div class="deal-desc">Double the goodness — two M trays for the price of almost one.</div>
+        <div style="display:flex;gap:6px;margin-bottom:.8rem;">
+          <img src="images/lv_0_20260527150854.png" style="width:54px;height:54px;object-fit:contain;">
+          <img src="images/lv_0_20260527150854.png" style="width:54px;height:54px;object-fit:contain;">
+        </div>
+        <div class="deal-desc">Stock: 2 deals left</div>
         <div class="deal-price-row">
           <div class="deal-price"><sup>₱</sup>285</div>
           <div class="deal-save">Save ₱35</div>
+          <div class="deal-badge" style="margin:0;">B1T1</div>
         </div>
         <button class="deal-btn" onclick="addToCart(this)">Grab Deal →</button>
       </div>
       <div class="deal-card deal-card--featured">
-        <div class="deal-badge deal-badge--gold">B1T1 ⭐</div>
-        <div class="deal-eggs">🥚🥚</div>
         <div class="deal-name">1 Medium + 1 Small</div>
-        <div class="deal-desc">Mix & match — a medium and a small tray together at a steal.</div>
+        <div style="display:flex;gap:6px;margin-bottom:.8rem;">
+          <img src="images/lv_0_20260527150854.png" style="width:54px;height:54px;object-fit:contain;">
+          <img src="images/lv_0_20260527151150.png" style="width:54px;height:54px;object-fit:contain;">
+        </div>
+        <div class="deal-desc">Stock: 5 deals left</div>
         <div class="deal-price-row">
           <div class="deal-price"><sup>₱</sup>160</div>
           <div class="deal-save">Save ₱150</div>
+          <div class="deal-badge deal-badge--gold" style="margin:0;">B1T1 ⭐</div>
         </div>
         <button class="deal-btn deal-btn--gold" onclick="addToCart(this)">Grab Deal →</button>
       </div>
@@ -799,9 +805,9 @@
     document.getElementById('trayName').textContent = btn.dataset.name;
     document.getElementById('trayPrice').textContent = btn.dataset.price;
     document.getElementById('trayDesc').textContent = btn.dataset.desc;
-    const badge = document.getElementById('trayBadge');
-    badge.textContent = btn.dataset.badge;
-    badge.style.display = btn.dataset.badge ? 'inline-block' : 'none';
+    const badgeRight = document.getElementById('trayBadgeRight');
+    badgeRight.textContent = btn.dataset.badge;
+    badgeRight.style.display = btn.dataset.badge ? 'inline-block' : 'none';
 
     currentSize = newSize;
   }
@@ -817,6 +823,7 @@
       document.getElementById('slideXS').classList.add('active');
       setTimeout(() => selectSize(mBtn), 50);
     }
+    // Badge is shown on the right side next to price
   });
 
   function addToCart(btn) {
@@ -851,6 +858,18 @@
   document.querySelectorAll('.product-card, .feature, .testi-card').forEach(el => {
     el.style.opacity = '0';
     observer.observe(el);
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script>
+  ['fire-icon','fire-icon-2'].forEach(function(id) {
+    lottie.loadAnimation({
+      container: document.getElementById(id),
+      renderer: 'svg',
+      loop: false,
+      autoplay: false,
+      path: 'icons/9d140e5e-1121-11ef-a147-0f8f2c5fd446.json'
+    });
   });
 </script>
 </body>
