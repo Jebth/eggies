@@ -295,47 +295,6 @@
     box-shadow: 0 2px 8px rgba(232,160,32,.25);
   }
 
-  /* DEALS */
-  .deals-section { margin-top: .5rem; }
-  .deals-header { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1.4rem; }
-  .deals-flame { font-size: 1.6rem; }
-  
-  .deals-label { font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #E8A020; margin-bottom: .15rem; text-align: center; }
-  .deals-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--fb-text); text-align: center; }
-  .deals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
-  .deal-card {
-    background: #fff; border: 1.5px solid var(--fb-border); border-radius: 14px;
-    padding: 1.5rem 1.4rem; position: relative; overflow: hidden;
-    transition: transform .2s, box-shadow .2s;
-  }
-  .deal-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,.1); }
-  .deal-card--featured {
-    background: linear-gradient(135deg, #FFF8E7 0%, #FFF3D0 100%);
-    border-color: #E8A020; box-shadow: 0 2px 12px rgba(232,160,32,.15);
-  }
-  .deal-badge {
-    display: inline-block; background: var(--fb-blue); color: #fff;
-    font-size: .7rem; font-weight: 800; letter-spacing: .06em;
-    padding: .22rem .7rem; border-radius: 6px; margin-bottom: .8rem;
-  }
-  .deal-badge--gold { background: linear-gradient(90deg, #E8A020, #F4C842); color: #5A3200; }
-  .deal-eggs { font-size: 1.8rem; margin-bottom: .5rem; }
-  .deal-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--fb-text); margin-bottom: .35rem; }
-  .deal-desc { font-size: .82rem; color: var(--fb-muted); line-height: 1.55; margin-bottom: 1rem; }
-  .deal-price-row { display: flex; align-items: baseline; gap: .6rem; margin-bottom: .9rem; }
-  .deal-price { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; color: var(--fb-blue); }
-  .deal-card--featured .deal-price { color: #C97A00; }
-  .deal-price sup { font-size: .7rem; vertical-align: super; }
-  .deal-save { background: #E8F5E9; color: #2E7D32; font-size: .72rem; font-weight: 700; padding: .18rem .55rem; border-radius: 6px; }
-  .deal-btn {
-    width: 100%; background: var(--fb-blue); color: #fff; border: none; border-radius: 9px;
-    padding: .6rem 1rem; font-family: 'DM Sans', sans-serif; font-size: .88rem; font-weight: 700;
-    cursor: pointer; transition: all .2s; letter-spacing: .02em;
-  }
-  .deal-btn:hover { background: var(--fb-blue-hover); transform: scale(1.02); }
-  .deal-btn--gold { background: linear-gradient(90deg, #E8A020, #F4C842); color: #4A2800; }
-  .deal-btn--gold:hover { filter: brightness(1.08); transform: scale(1.02); background: linear-gradient(90deg, #E8A020, #F4C842); }
-
   /* WHY US */
   .why { background: var(--fb-white); border-top: 1px solid var(--fb-border); border-bottom: 1px solid var(--fb-border); padding: 5rem 3rem; }
   .why-inner { max-width: 1200px; margin: 0 auto; }
@@ -629,47 +588,6 @@
     </div>
   </div>
 
-  <!-- Buy 1 Take 1 Deals -->
-  <div class="deals-section">
-    <div class="deals-header">
-      <div id="fire-icon" style="width:48px;height:48px;flex-shrink:0;"></div>
-      <div>
-        <div class="deals-label">─── ୨ LIMITED OFFERS ৎ ───</div>
-        <div class="deals-title">Buy 1 Take 1 Deals</div>
-      </div>
-      <div id="fire-icon-2" style="width:48px;height:48px;flex-shrink:0;"></div>
-    </div>
-    <div class="deals-grid">
-      <div class="deal-card">
-        <div class="deal-name">2 × Medium Trays</div>
-        <div style="display:flex;gap:6px;margin-bottom:.8rem;">
-          <img src="images/lv_0_20260527155804.png" style="width:54px;height:54px;object-fit:contain;">
-          <img src="images/lv_0_20260527155804.png" style="width:54px;height:54px;object-fit:contain;">
-        </div>
-        <div class="deal-desc">Stock: 2 deals left</div>
-        <div class="deal-price-row">
-          <div class="deal-price"><sup>₱</sup>285</div>
-          <div class="deal-save">Save ₱35</div>
-          <div class="deal-badge" style="margin:0;">B1T1</div>
-        </div>
-        <button class="deal-btn" onclick="addToCart(this)">Grab Deal →</button>
-      </div>
-      <div class="deal-card deal-card--featured">
-        <div class="deal-name">1 Medium + 1 Small</div>
-        <div style="display:flex;gap:6px;margin-bottom:.8rem;">
-          <img src="images/lv_0_20260527155804.png" style="width:54px;height:54px;object-fit:contain;">
-          <img src="images/lv_0_20260527155709.png" style="width:54px;height:54px;object-fit:contain;">
-        </div>
-        <div class="deal-desc">Stock: 5 deals left</div>
-        <div class="deal-price-row">
-          <div class="deal-price"><sup>₱</sup>160</div>
-          <div class="deal-save">Save ₱150</div>
-          <div class="deal-badge deal-badge--gold" style="margin:0;">B1T1 ⭐</div>
-        </div>
-        <button class="deal-btn deal-btn--gold" onclick="addToCart(this)">Grab Deal →</button>
-      </div>
-    </div>
-  </div>
 
 </section>
 
@@ -677,7 +595,11 @@
 <section class="why" id="why">
   <div class="why-inner">
     <div class="section-label" style="text-align:center">Why Us</div>
-    <h2>Why Choose <em>Urbest?</em></h2>
+    <div style="display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:2.5rem;">
+      <div id="confused-icon" style="width:64px;height:64px;flex-shrink:0;"></div>
+      <h2 style="margin-bottom:0;">୨ Why Choose <em>Urbest?</em> ৎ</h2>
+      <div id="question-icon" style="width:64px;height:64px;flex-shrink:0;"></div>
+    </div>
     <div class="features">
       <div class="feature">
         <div class="feature-icon">🐔</div>
@@ -862,15 +784,36 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 <script>
-  ['fire-icon','fire-icon-2'].forEach(function(id) {
-    lottie.loadAnimation({
-      container: document.getElementById(id),
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      path: 'icons/9d140e5e-1121-11ef-a147-0f8f2c5fd446.json'
-    });
+  // Confused emoji — autoplay, looping
+  lottie.loadAnimation({
+    container: document.getElementById('confused-icon'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'icons/902a54ca-1152-11ee-bd66-f7deb1eae857.json'
   });
+
+  // Question mark — plays once when scrolled into view
+  var qmarkAnim = lottie.loadAnimation({
+    container: document.getElementById('question-icon'),
+    renderer: 'svg',
+    loop: false,
+    autoplay: false,
+    path: 'icons/d8adf658-1174-11ee-bde1-9f06e9a3eb84.json'
+  });
+
+  var qmarkPlayed = false;
+  var whySection = document.getElementById('why');
+  var qmarkObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && !qmarkPlayed) {
+        qmarkPlayed = true;
+        qmarkAnim.play();
+        qmarkObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  qmarkObserver.observe(whySection);
 </script>
 </body>
 </html>
