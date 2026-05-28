@@ -190,17 +190,28 @@
   @keyframes glowPulse { 0%,100%{opacity:1;transform:translate(-50%,-50%) scale(1)} 50%{opacity:.5;transform:translate(-50%,-50%) scale(1.12)} }
 
   /* MARQUEE */
-  .marquee-section { background: var(--fb-blue); padding: .75rem 0; overflow: hidden; }
+  .marquee-section {
+    background: var(--fb-blue); padding: .75rem 0; overflow: hidden;
+    position: relative; cursor: grab; user-select: none;
+  }
+  .marquee-section::before,
+  .marquee-section::after {
+    content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none;
+  }
+  .marquee-section::before { left: 0; background: linear-gradient(to right, var(--fb-blue) 0%, transparent 100%); }
+  .marquee-section::after  { right: 0; background: linear-gradient(to left,  var(--fb-blue) 0%, transparent 100%); }
+  .marquee-inner { display: flex; width: max-content; animation: marquee 28s linear infinite; }
   .marquee-track {
-    display: flex; gap: 3rem; animation: marquee 22s linear infinite; white-space: nowrap;
+    display: flex; gap: 0; white-space: nowrap; flex-shrink: 0;
   }
   .marquee-track span {
     color: #fff; font-size: .78rem; font-weight: 600;
     letter-spacing: .1em; text-transform: uppercase;
-    flex-shrink: 0; display: flex; align-items: center; gap: .5rem;
+    flex-shrink: 0; display: inline-flex; align-items: center;
+    padding: 0 1.5rem;
   }
-  .marquee-track span::before { content: '✦'; font-size: .5rem; opacity: .7; }
-  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .marquee-track span::before { content: ' ⟡ '; font-size: .85rem; opacity: .85; margin-right: .4rem; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
   /* SECTION SHARED */
   .section-label {
@@ -513,10 +524,14 @@
 </section>
 
 <!-- MARQUEE -->
-<div class="marquee-section">
-  <div class="marquee-track">
-    <span>Hands-On Weighing</span><span>Healthy Layer Farming</span><span>Hand-Collected Daily</span><span>Rich Golden Yolks</span><span>Cage-Free Always</span><span>Local Farm Fresh</span><span>100% Natural Feed</span><span>Delivered to Your Door</span>
-    <span>Hands-On Weighing</span><span>Healthy Layer Farming</span><span>Hand-Collected Daily</span><span>Rich Golden Yolks</span><span>Cage-Free Always</span><span>Local Farm Fresh</span><span>100% Natural Feed</span><span>Delivered to Your Door</span>
+<div class="marquee-section" id="marqueeSection">
+  <div class="marquee-inner" id="marqueeInner">
+    <div class="marquee-track">
+      <span>Healthy Layer Farming</span><span>Hand-Collected Daily</span><span>Hands-On Weighing</span>
+    </div>
+    <div class="marquee-track" aria-hidden="true">
+      <span>Healthy Layer Farming</span><span>Hand-Collected Daily</span><span>Hands-On Weighing</span>
+    </div>
   </div>
 </div>
 
@@ -857,6 +872,86 @@
   }, { threshold: 0.2 });
 
   whyObserver.observe(whySection);
+</script>
+
+<script>
+  // --- Interactive Marquee (scroll ON the bar to speed it up) ---
+  (function () {
+    const section = document.getElementById('marqueeSection');
+    const inner   = document.getElementById('marqueeInner');
+    if (!inner || !section) return;
+
+    const BASE_SPEED = 0.4;   // px per frame at rest
+    const MAX_BOOST  = 18;    // max extra px per frame
+    const DECAY      = 0.94;  // how quickly boost fades
+    const MAX_BLUR   = 5;     // max blur px
+
+    let offset = 0;
+    let boost  = 0;
+    let halfW  = 0;
+
+    function measure() { halfW = inner.scrollWidth / 2; }
+
+    function tick() {
+      offset += BASE_SPEED + boost;
+      if (offset >= halfW) offset -= halfW;
+
+      inner.style.transform = 'translateX(-' + offset.toFixed(2) + 'px)';
+
+      const blurAmt = (boost / MAX_BOOST) * MAX_BLUR;
+      inner.style.filter = blurAmt > 0.15 ? 'blur(' + blurAmt.toFixed(2) + 'px)' : '';
+
+      boost = Math.max(0, boost * DECAY);
+      requestAnimationFrame(tick);
+    }
+
+    // ── Wheel: only when hovering the marquee bar ──
+    section.addEventListener('wheel', function (e) {
+      e.preventDefault(); // stop page scroll while on the bar
+      const delta = Math.abs(e.deltaY) || Math.abs(e.deltaX);
+      boost = Math.min(boost + delta * 0.055, MAX_BOOST);
+    }, { passive: false });
+
+    // ── Touch: only touches that start on the marquee bar ──
+    let lastTouchX = null;
+    section.addEventListener('touchstart', function (e) {
+      lastTouchX = e.touches[0].clientX;
+    }, { passive: true });
+    section.addEventListener('touchmove', function (e) {
+      if (lastTouchX === null) return;
+      const dx = Math.abs(e.touches[0].clientX - lastTouchX);
+      boost = Math.min(boost + dx * 0.25, MAX_BOOST);
+      lastTouchX = e.touches[0].clientX;
+    }, { passive: true });
+    section.addEventListener('touchend', function () {
+      lastTouchX = null;
+    }, { passive: true });
+
+    // ── Mouse drag on the bar ──
+    let isDragging = false;
+    let lastMouseX = null;
+    section.addEventListener('mousedown', function (e) {
+      isDragging = true;
+      lastMouseX = e.clientX;
+      section.style.cursor = 'grabbing';
+    });
+    window.addEventListener('mousemove', function (e) {
+      if (!isDragging || lastMouseX === null) return;
+      const dx = Math.abs(e.clientX - lastMouseX);
+      boost = Math.min(boost + dx * 0.3, MAX_BOOST);
+      lastMouseX = e.clientX;
+    });
+    window.addEventListener('mouseup', function () {
+      isDragging = false;
+      lastMouseX = null;
+      section.style.cursor = '';
+    });
+
+    inner.style.animation = 'none';
+    measure();
+    window.addEventListener('resize', measure);
+    requestAnimationFrame(tick);
+  })();
 </script>
 </body>
 </html>
