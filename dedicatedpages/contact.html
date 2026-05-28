@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact — Urbest Eggs</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --fb-blue:      #1877F2;
+    --fb-blue-deep: #0D5FCC;
+    --fb-blue-hover:#2D88FF;
+    --fb-bg:        #F0F2F5;
+    --fb-white:     #FFFFFF;
+    --fb-border:    #CED0D4;
+    --fb-text:      #050505;
+    --fb-muted:     #65676B;
+    --fb-light-btn: #E4E6EB;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--fb-bg);
+    color: var(--fb-text);
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: .8rem 3rem;
+    background: var(--fb-white);
+    border-bottom: 1px solid var(--fb-border);
+    box-shadow: 0 2px 4px rgba(0,0,0,.08);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: .6rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 900;
+    color: var(--fb-text); text-decoration: none;
+  }
+  .logo-egg { color: var(--fb-blue); }
+  .back-btn {
+    display: flex; align-items: center; gap: .45rem;
+    background: var(--fb-light-btn); color: var(--fb-text);
+    border: none; border-radius: 8px;
+    padding: .5rem 1.1rem;
+    font-family: 'DM Sans', sans-serif; font-size: .88rem; font-weight: 600;
+    cursor: pointer; text-decoration: none;
+    transition: background .18s, transform .18s;
+  }
+  .back-btn:hover { background: var(--fb-border); transform: translateX(-2px); }
+  .back-btn svg { flex-shrink: 0; }
+
+  /* MAIN */
+  .page-wrap {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: calc(80px + 3.5rem) 1.5rem 4rem;
+    animation: fadeUp .7s cubic-bezier(.14,.27,.02,.98) both;
+  }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+
+  .page-kicker {
+    font-size: .72rem; font-weight: 700; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--fb-blue); margin-bottom: .7rem;
+  }
+  .page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 6vw, 3rem); font-weight: 900;
+    line-height: 1.15; color: var(--fb-text); margin-bottom: .9rem;
+  }
+  .page-title em { font-style: italic; color: var(--fb-blue); }
+  .page-sub {
+    color: var(--fb-muted); font-size: .93rem; line-height: 1.7; margin-bottom: 2.5rem;
+  }
+
+  /* CARD */
+  .form-card {
+    background: var(--fb-white);
+    border: 1px solid var(--fb-border);
+    border-radius: 16px;
+    padding: 2.2rem 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,.07);
+  }
+
+  .field { margin-bottom: 1.3rem; }
+  .field label {
+    display: block;
+    font-size: .8rem; font-weight: 600; color: var(--fb-muted);
+    letter-spacing: .05em; text-transform: uppercase;
+    margin-bottom: .45rem;
+  }
+  .field input,
+  .field textarea {
+    width: 100%;
+    background: var(--fb-bg);
+    border: 1.5px solid var(--fb-border);
+    border-radius: 10px;
+    padding: .75rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: .93rem;
+    color: var(--fb-text);
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+    resize: none;
+  }
+  .field input:focus,
+  .field textarea:focus {
+    border-color: var(--fb-blue);
+    box-shadow: 0 0 0 3px rgba(24,119,242,.12);
+  }
+  .field textarea { min-height: 130px; line-height: 1.6; }
+
+  .submit-btn {
+    width: 100%;
+    background: var(--fb-blue); color: #fff;
+    border: none; border-radius: 10px;
+    padding: .85rem 1.5rem;
+    font-family: 'DM Sans', sans-serif; font-size: .97rem; font-weight: 700;
+    cursor: pointer; transition: background .2s, transform .18s, box-shadow .2s;
+    margin-top: .3rem;
+  }
+  .submit-btn:hover {
+    background: var(--fb-blue-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(24,119,242,.28);
+  }
+  .submit-btn:active { transform: translateY(0); }
+
+  /* SUCCESS STATE */
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 1.5rem 0 .5rem;
+    animation: fadeUp .5s cubic-bezier(.14,.27,.02,.98) both;
+  }
+  .success-msg .check { font-size: 2.8rem; margin-bottom: .8rem; }
+  .success-msg h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 700; color: var(--fb-text); margin-bottom: .45rem;
+  }
+  .success-msg p { color: var(--fb-muted); font-size: .88rem; line-height: 1.6; }
+
+  footer {
+    text-align: center; padding: 2rem 1rem;
+    color: var(--fb-border); font-size: .75rem;
+  }
+
+  @media(max-width:540px) {
+    nav { padding: .8rem 1.2rem; }
+    .form-card { padding: 1.6rem 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <svg width="26" height="26" viewBox="0 0 36 36" fill="none">
+      <ellipse cx="18" cy="20" rx="13" ry="14" fill="#FFF8EE" stroke="#C9975A" stroke-width="1.5"/>
+      <circle cx="18" cy="21" r="5.5" fill="#E8A020"/>
+    </svg>
+    Urbest <span class="logo-egg">Eggs</span>
+  </a>
+  <a href="../index.html" class="back-btn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5M12 5l-7 7 7 7"/>
+    </svg>
+    Back
+  </a>
+</nav>
+
+<div class="page-wrap">
+  <div class="page-kicker">Get in Touch</div>
+  <h1 class="page-title">We'd Love to<br><em>Hear From You</em></h1>
+  <p class="page-sub">Got a question, a bulk order, or just want to say hello? Drop us a message and we'll get back to you shortly.</p>
+
+  <div class="form-card">
+    <form id="contactForm" onsubmit="handleSubmit(event)">
+      <div class="field">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="e.g. Maria Santos" required autocomplete="name"/>
+      </div>
+      <div class="field">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="yourname@gmail.com" required autocomplete="email"/>
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Tell us what's on your mind…" required></textarea>
+      </div>
+      <button type="submit" class="submit-btn" id="submitBtn">Send Message 🥚</button>
+    </form>
+
+    <div class="success-msg" id="successMsg">
+      <div class="check">✅</div>
+      <h3>Message sent!</h3>
+      <p>Thanks for reaching out. We'll get back to you as soon as possible.</p>
+    </div>
+  </div>
+</div>
+
+<footer>© 2026 Urbest Eggs. All rights reserved.</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const name    = document.getElementById('name').value.trim();
+    const email   = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    const subject = encodeURIComponent('Message from ' + name + ' — Urbest Eggs Contact');
+    const body    = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Email: ' + email + '\n\n' +
+      'Message:\n' + message
+    );
+
+    window.location.href = 'mailto:jemolinabusiness@gmail.com?subject=' + subject + '&body=' + body;
+
+    // Show success state
+    document.getElementById('contactForm').style.display = 'none';
+    const s = document.getElementById('successMsg');
+    s.style.display = 'block';
+  }
+</script>
+</body>
+</html>
