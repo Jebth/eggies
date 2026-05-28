@@ -113,9 +113,48 @@
   h1 em {
     font-style: italic; color: var(--fb-text); position: relative; display: inline-block;
   }
-  h1 em::after {
-    content: none;
+  h1 em::after { content: none; }
+
+  /* PANGASINAN HIGHLIGHT ANIMATION */
+  .pangasinan-wrap {
+    display: inline-block;
+    background: linear-gradient(67deg,#F4F4F4 0%,#F4F4F4 18%,#FED141 28%,#FED141 42%,#0032A0 55%,#0032A0 72%,#BF0D3E 85%,#BF0D3E 100%);
+    padding: 2px 8px;
+    line-height: 1.2;
+    margin-top: 0.15em;
+    position: relative;
+    overflow: hidden;
   }
+  /* The sweep overlay — starts off-screen left, sweeps right */
+  .pangasinan-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; bottom: 0;
+    width: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255,255,255,0.55) 40%,
+      rgba(255,255,255,0.8) 55%,
+      rgba(255,255,255,0.55) 70%,
+      transparent 100%
+    );
+    animation: pangSweep 2.8s cubic-bezier(.21,.59,.47,.96) infinite;
+    animation-delay: 1.2s;
+  }
+  @keyframes pangSweep {
+    0%   { left: -110%; }
+    100% { left: 110%; }
+  }
+  .pangasinan-text {
+    background: linear-gradient(67deg,#111111 0%,#111111 10%,#FFFFFF 25%,#FFFFFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    z-index: 1;
+  }
+
   .hero-sub {
     margin-top: 1.2rem; font-size: 1rem; font-weight: 400;
     line-height: 1.7; color: var(--fb-muted); max-width: 420px;
@@ -282,7 +321,6 @@
   }
   .tray-slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
 
-  /* REAL IMAGE STYLES */
   .tray-img {
     width: 100%;
     height: 100%;
@@ -458,7 +496,7 @@
   }
   .drawer-close:hover { color: var(--fb-text); }
 
-  </style>
+</style>
 </head>
 <body>
 
@@ -502,7 +540,7 @@
 
   <div class="hero-text">
     <div class="hero-badge"><img src="images/lv_0_20260528172552.png" alt="Creamy Orange Yolk Eggs" style="height:44px;width:auto;"></div>
-    <h1>One of the<br><span>Freshest</span> Eggs<br>in <span style="display:inline-block;background:linear-gradient(67deg,#F4F4F4 0%,#F4F4F4 18%,#FED141 28%,#FED141 42%,#0032A0 55%,#0032A0 72%,#BF0D3E 85%,#BF0D3E 100%);padding:2px 8px;line-height:1.2;margin-top:0.15em;"><span style="background:linear-gradient(67deg,#111111 0%,#111111 10%,#FFFFFF 25%,#FFFFFF 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Pangasinan</span></span></h1>
+    <h1>One of the<br><span>Freshest</span> Eggs<br>in <span class="pangasinan-wrap"><span class="pangasinan-text">Pangasinan</span></span></h1>
     <p class="hero-sub">Hand-harvested every single day from our lovingly cared-for manok, with <em style="font-style:italic;">eggstraordinary yolks</em> that you'll love and should've have tasted long ago.</p>
     <div class="hero-actions">
       <a href="#products" class="btn-primary"><img src="icons/eggs (1).png" alt="" style="height:1.2em;width:auto;vertical-align:middle;margin-right:0.4em;margin-bottom:0.1em;">Browse Trays</a>
@@ -632,11 +670,9 @@
     <p style="color:#9AA0A6;font-size:.88rem;font-style:italic;margin:0;">Curated just from your touch.</p>
   </div>
 
-  <!-- Single Egg Tray Card -->
   <div class="tray-card-wrap">
     <div class="product-card tray-card" id="trayCard">
 
-      <!-- Animated visual area with REAL images -->
       <div class="card-visual tray-visual" id="trayVisual">
         <div class="tray-slider" id="traySlider">
 
@@ -663,12 +699,10 @@
         </div>
       </div>
 
-      <!-- Card body -->
       <div class="card-body">
         <div class="card-name" style="margin-bottom:.7rem;" id="trayName">Egg Tray ᯓ Extra Small</div>
         <div class="card-desc" id="trayDesc" style="margin-bottom:1rem;">Stock: &lt;1</div>
 
-        <!-- Size picker -->
         <div class="size-picker" id="sizePicker">
           <button class="size-btn" data-size="XS" data-price="125" data-badge="" data-name="Egg Tray ᯓ Extra Small" data-desc="Stock: &lt;1" onclick="selectSize(this)">XS</button>
           <button class="size-btn" data-size="S"  data-price="150" data-badge="" data-name="Egg Tray ᯓ Small" data-desc="Stock: 26" onclick="selectSize(this)">S</button>
@@ -688,20 +722,17 @@
     </div>
   </div>
 
-
 </section>
 
 <!-- WHY US -->
 <section class="why" id="why">
   <div class="why-inner">
     <div style="text-align:center;margin-bottom:2.5rem;">
-      <!-- Row: icon | label | icon — icons are big, label text centered -->
       <div style="display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-bottom:.6rem;">
         <div id="confused-icon" style="width:64px;height:64px;flex-shrink:0;"></div>
         <div class="section-label" style="margin-bottom:0;letter-spacing:.18em;">──── WHY US ────</div>
         <div id="question-icon" style="width:64px;height:64px;flex-shrink:0;"></div>
       </div>
-      <!-- Heading fully below, separate row, never overlapping -->
       <h2 style="margin-bottom:0;white-space:nowrap;">୨ Why Choose <em>Urbest?</em> ৎ</h2>
     </div>
     <div class="features">
@@ -783,7 +814,7 @@
     <li><a href="#products">Shop</a></li>
     <li><a href="#why">Our Farm</a></li>
     <li><a href="#reviews">Reviews</a></li>
-    <li><a href="#">Contact</a></li>
+    <li><a href="dedicatedpages/contact.html">Contact</a></li>
   </ul>
   <div class="footer-copy">© 2026 Urbest Eggs. All rights reserved.</div>
 </footer>
@@ -849,7 +880,6 @@
       document.getElementById('slideXS').classList.add('active');
       setTimeout(() => selectSize(mBtn), 50);
     }
-    // Badge is shown on the right side next to price
   });
 
   function addToCart(btn) {
@@ -888,7 +918,6 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 <script>
-  // Confused emoji — autoplay, looping
   var confusedAnim = lottie.loadAnimation({
     container: document.getElementById('confused-icon'),
     renderer: 'svg',
@@ -897,7 +926,6 @@
     path: 'icons/902a54ca-1152-11ee-bd66-f7deb1eae857.json'
   });
 
-  // Question mark — plays once when scrolled into view
   var qmarkAnim = lottie.loadAnimation({
     container: document.getElementById('question-icon'),
     renderer: 'svg',
@@ -915,16 +943,11 @@
   var whyObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting) {
-        // Scrolled INTO why section
         whyVisible = true;
-
-        // Play question mark once
         if (!qmarkPlayed) {
           qmarkPlayed = true;
           qmarkAnim.play();
         }
-
-        // If star was loaded, swap back to confused
         if (starLoaded) {
           var el = document.getElementById('confused-icon');
           confusedAnim.destroy();
@@ -938,7 +961,6 @@
           });
         }
       } else {
-        // Scrolled OUT (above) — swap confused to star impressed
         if (whyVisible && !starLoaded) {
           whyVisible = false;
           starLoaded = true;
@@ -962,16 +984,15 @@
 </script>
 
 <script>
-  // --- Interactive Marquee (scroll ON the bar to speed it up) ---
   (function () {
     const section = document.getElementById('marqueeSection');
     const inner   = document.getElementById('marqueeInner');
     if (!inner || !section) return;
 
-    const BASE_SPEED = 0.4;   // px per frame at rest
-    const MAX_BOOST  = 18;    // max extra px per frame
-    const DECAY      = 0.94;  // how quickly boost fades
-    const MAX_BLUR   = 5;     // max blur px
+    const BASE_SPEED = 0.4;
+    const MAX_BOOST  = 18;
+    const DECAY      = 0.94;
+    const MAX_BLUR   = 5;
 
     let offset = 0;
     let boost  = 0;
@@ -992,14 +1013,12 @@
       requestAnimationFrame(tick);
     }
 
-    // ── Wheel: only when hovering the marquee bar ──
     section.addEventListener('wheel', function (e) {
-      e.preventDefault(); // stop page scroll while on the bar
+      e.preventDefault();
       const delta = Math.abs(e.deltaY) || Math.abs(e.deltaX);
       boost = Math.min(boost + delta * 0.055, MAX_BOOST);
     }, { passive: false });
 
-    // ── Touch: only touches that start on the marquee bar ──
     let lastTouchX = null;
     section.addEventListener('touchstart', function (e) {
       lastTouchX = e.touches[0].clientX;
@@ -1014,7 +1033,6 @@
       lastTouchX = null;
     }, { passive: true });
 
-    // ── Mouse drag on the bar ──
     let isDragging = false;
     let lastMouseX = null;
     section.addEventListener('mousedown', function (e) {
