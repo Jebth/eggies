@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Origins — Urbest Eggs</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --fb-blue:      #1877F2;
+    --fb-blue-deep: #0D5FCC;
+    --fb-blue-hover:#2D88FF;
+    --fb-bg:        #F0F2F5;
+    --fb-white:     #FFFFFF;
+    --fb-border:    #CED0D4;
+    --fb-text:      #050505;
+    --fb-muted:     #65676B;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--fb-bg); color: var(--fb-text); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; gap: 1rem;
+    padding: .9rem 3rem;
+    background: var(--fb-white);
+    border-bottom: 1px solid var(--fb-border);
+    box-shadow: 0 2px 4px rgba(0,0,0,.06);
+  }
+  .back-btn {
+    display: flex; align-items: center; gap: .5rem;
+    font-family: 'DM Sans', sans-serif; font-size: .88rem; font-weight: 600;
+    color: var(--fb-muted); text-decoration: none;
+    padding: .4rem .9rem; border-radius: 8px;
+    transition: background .15s, color .15s;
+  }
+  .back-btn:hover { background: var(--fb-bg); color: var(--fb-blue); }
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 900; color: var(--fb-text);
+    text-decoration: none;
+  }
+  .nav-brand span { color: var(--fb-blue); }
+
+  /* HERO */
+  .page-hero {
+    padding: calc(80px + 4rem) 3rem 3.5rem;
+    background: var(--fb-white);
+    border-bottom: 1px solid var(--fb-border);
+    max-width: 860px; margin: 0 auto;
+  }
+  .page-tag {
+    display: inline-block;
+    font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: #f09215;
+    background: #fff8ee; border: 1px solid #f7d28a;
+    border-radius: 20px; padding: .3rem .9rem; margin-bottom: 1.2rem;
+  }
+  .page-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 900; line-height: 1.15;
+    color: var(--fb-text); margin-bottom: 1.2rem;
+  }
+  .page-hero p {
+    font-size: 1.05rem; line-height: 1.8; color: var(--fb-muted); max-width: 600px;
+  }
+
+  /* CONTENT */
+  .content { max-width: 860px; margin: 0 auto; padding: 3.5rem 3rem 5rem; }
+
+  .story-section { margin-bottom: 3.5rem; }
+  .story-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem;
+    color: var(--fb-text);
+  }
+  .story-section p {
+    font-size: 1rem; line-height: 1.85; color: var(--fb-muted); margin-bottom: 1rem;
+  }
+  .story-divider {
+    width: 48px; height: 3px; background: #f09215;
+    border-radius: 4px; margin-bottom: 1.4rem;
+  }
+
+  .values-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem; margin-top: 2rem;
+  }
+  .value-card {
+    background: var(--fb-white); border: 1px solid var(--fb-border);
+    border-radius: 14px; padding: 1.6rem 1.4rem;
+  }
+  .value-icon {
+    font-size: 1.8rem; margin-bottom: .8rem;
+  }
+  .value-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; font-weight: 700;
+    color: var(--fb-text); margin-bottom: .5rem;
+  }
+  .value-card p { font-size: .9rem; line-height: 1.7; color: var(--fb-muted); }
+
+  .timeline { position: relative; padding-left: 2rem; margin-top: 1.5rem; }
+  .timeline::before {
+    content: ''; position: absolute; left: 7px; top: 0; bottom: 0;
+    width: 2px; background: var(--fb-border); border-radius: 2px;
+  }
+  .timeline-item { position: relative; margin-bottom: 2rem; }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -1.72rem; top: 6px;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: #f09215; border: 2px solid #fff;
+    box-shadow: 0 0 0 2px #f09215;
+  }
+  .timeline-item h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: .75rem; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: #f09215; margin-bottom: .3rem;
+  }
+  .timeline-item p { font-size: .95rem; line-height: 1.7; color: var(--fb-muted); }
+
+  /* CTA */
+  .bottom-cta {
+    background: var(--fb-blue); border-radius: 16px;
+    padding: 2.5rem 2rem; text-align: center; margin-top: 1rem;
+  }
+  .bottom-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; color: #fff; margin-bottom: .8rem;
+  }
+  .bottom-cta p { color: rgba(255,255,255,.8); margin-bottom: 1.4rem; font-size: .95rem; }
+  .btn-white {
+    display: inline-block; background: #fff; color: var(--fb-blue);
+    font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: .9rem;
+    padding: .7rem 1.8rem; border-radius: 10px; text-decoration: none;
+    transition: opacity .2s;
+  }
+  .btn-white:hover { opacity: .88; }
+
+  @media (max-width: 640px) {
+    nav { padding: .9rem 1.2rem; }
+    .page-hero, .content { padding-left: 1.2rem; padding-right: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index__10_.html" class="back-btn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"/>
+    </svg>
+    Back
+  </a>
+  <a href="../index__10_.html" class="nav-brand">Urbest <span>Eggs</span></a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-tag">Our Story</div>
+  <h1>Where It All Began</h1>
+  <p>Urbest Eggs didn't start as a business — it started as a commitment. A promise to raise hens the right way, collect every egg by hand, and bring something real to your table.</p>
+</div>
+
+<div class="content">
+
+  <div class="story-section">
+    <div class="story-divider"></div>
+    <h2>A Farm Born from Care</h2>
+    <p>Nestled in the heart of Pangasinan, our farm began with a single flock and a simple belief: that the quality of an egg is a direct reflection of how its hen is treated. Every hen at Urbest is raised in open, well-ventilated spaces — never caged, never rushed.</p>
+    <p>We started small, selling only to neighbors and local markets. Word spread not because of advertising, but because the difference was undeniable. The yolks were richer. The shells were stronger. The taste was something people kept coming back for.</p>
+  </div>
+
+  <div class="story-section">
+    <div class="story-divider"></div>
+    <h2>The Pangasinan Advantage</h2>
+    <p>Pangasinan's climate is ideal for layer farming. The combination of natural airflow, rich soil for foraging, and the dedication of local hands means our hens thrive in conditions most commercial farms can't replicate. It's not just geography — it's a way of life passed down through generations of farmers who understood that patience produces quality.</p>
+  </div>
+
+  <div class="story-section">
+    <div class="story-divider"></div>
+    <h2>Our Values</h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🐔</div>
+        <h3>Hen Welfare First</h3>
+        <p>Happy, healthy hens lay better eggs. We never compromise on space, diet, or care.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🤲</div>
+        <h3>Hand-Collected Daily</h3>
+        <p>Every single egg is hand-picked each morning to ensure freshness from the moment it's laid.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">⚖️</div>
+        <h3>Hands-On Weighing</h3>
+        <p>We weigh and grade each egg ourselves — no machines, no shortcuts, no guessing.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🌾</div>
+        <h3>Natural Feed Only</h3>
+        <p>Zero artificial hormones. Zero antibiotics. Just clean, wholesome feed and open pasture.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="story-section">
+    <div class="story-divider"></div>
+    <h2>How We've Grown</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>The Beginning</h3>
+        <p>A small backyard flock in Pangasinan. Our founder starts selling fresh eggs to neighbors who quickly became loyal customers.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>First Expansion</h3>
+        <p>Demand grows beyond what one flock can handle. We expand our layer farm while keeping every practice hands-on and personal.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Going Local</h3>
+        <p>Urbest Eggs reaches local markets and small businesses across Pangasinan, becoming a trusted name for freshness and consistency.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Today</h3>
+        <p>We serve households, bakers, restaurants, and resellers — all with the same care and quality that started it all. The mission hasn't changed.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-cta">
+    <h2>Ready to Taste the Difference?</h2>
+    <p>Experience what farm-fresh really means — straight from Pangasinan to your table.</p>
+    <a href="../index__10_.html#products" class="btn-white">Shop Now</a>
+  </div>
+
+</div>
+</body>
+</html>
