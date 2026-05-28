@@ -98,13 +98,11 @@
   }
   .hero-text { position: relative; z-index: 1; }
   .hero-badge {
-    display: inline-flex; align-items: center; gap: .4rem;
-    background: #E7F0FD; color: var(--fb-blue);
-    border-radius: 50px; padding: .35rem 1rem;
-    font-size: .78rem; font-weight: 600; letter-spacing: .04em;
+    display: inline-flex; align-items: center;
     margin-bottom: 1.4rem; animation: fadeUp .7s cubic-bezier(.14,.27,.02,.98) both;
+    background: none; padding: 0; border-radius: 0;
   }
-  .hero-badge::before { content: '●'; font-size: .45rem; animation: pulse 1.5s infinite; }
+  .hero-badge::before { content: none; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
   h1 {
     font-family: 'Playfair Display', serif;
@@ -404,7 +402,7 @@
   <svg class="bg-egg" style="left:72%;width:50px;animation-duration:25s;animation-delay:-10s" viewBox="0 0 40 50"><ellipse cx="20" cy="27" rx="16" ry="20" fill="#F5E6C8"/></svg>
 
   <div class="hero-text">
-    <div class="hero-badge">🥚 Creamy Orange Yolk Eggs</div>
+    <div class="hero-badge"><img src="images/lv_0_20260528171723.png" alt="Creamy Orange Yolk Eggs" style="height:56px;width:auto;"></div>
     <h1>One of the<br><span>Freshest</span> <img src="images/lv_0_20260528084723.png" alt="Eggs" style="display:inline-block;height:2.7em;width:auto;vertical-align:middle;margin:0 0.1em -0.3em;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.10));"><br>in <span style="display:inline-block;background:linear-gradient(67deg,#F4F4F4 0%,#F4F4F4 18%,#FED141 28%,#FED141 42%,#0032A0 55%,#0032A0 72%,#BF0D3E 85%,#BF0D3E 100%);padding:2px 8px;line-height:1.1;"><span style="background:linear-gradient(67deg,#111111 0%,#111111 10%,#FFFFFF 25%,#FFFFFF 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Pangasinan</span></span></h1>
     <p class="hero-sub">Hand-harvested every single day from our lovingly cared-for manok, with <em style="font-style:italic;">eggstraordinary yolks</em> that you'll love and should've have tasted long ago.</p>
     <div class="hero-actions">
